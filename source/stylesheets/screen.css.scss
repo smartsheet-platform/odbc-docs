@@ -1,4 +1,4 @@
-﻿@charset "utf-8";
+@charset "utf-8";
 @import 'normalize';
 @import 'compass';
 @import 'variables';
@@ -244,7 +244,7 @@ html, body {
   }
 
   // Section headers
-  .tocify-item[data-unique="getting-started"], .tocify-item[data-unique|="install-&-configure"], .tocify-item[data-unique|="usage"], .tocify-item[data-unique|="faq"] {
+  .tocify-item[data-unique="getting-started"], .tocify-item[data-unique|="configuration"], .tocify-item[data-unique|="usage"], .tocify-item[data-unique|="faq"] {
 	text-transform: uppercase;
 	margin-top: 1em;
 	margin-bottom: 0.5em;
@@ -252,7 +252,7 @@ html, body {
 	font-weight: bold;
   }
 
-  .tocify-item[data-unique="getting-started"]:hover, .tocify-item[data-unique|="install-&-configure"]:hover, .tocify-item[data-unique|="usage"]:hover, .tocify-item[data-unique|="faq"]:hover {
+  .tocify-item[data-unique="getting-started"]:hover, .tocify-item[data-unique|="configuration"]:hover, .tocify-item[data-unique|="usage"]:hover, .tocify-item[data-unique|="faq"]:hover {
 	color: $nav-text;
   }
 

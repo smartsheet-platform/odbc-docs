@@ -39,29 +39,46 @@ CREATED_DATE | DATETIME
 CREATED_BY  | CONTACT_LIST
 AUTO_NUMBER | TEXT_NUMBER | Columns of this system column type will include an [AutoNumberFormat object](#autonumberformat-object) that describes the mask used to generate the value.
 
-This is my first image: 
+## Overview
 
-<img src="images/testImage_1.png" />
+The Smartsheet Live Data Connector (also known as the Smartsheet ODBC Driver) provides industry-standard connectivity between Smartsheet and third-party analytics tools.  It enables business users to interact with and visualize data stored in Smartsheet using business analytics and data visualization software such as Tableau, Spotfire, QlikView / Qlik Sense, Excel and others.
+ 
+Benefits of using the Live Data Connector include, but not limited to, the following:
 
-# Section 1
+* Industry-standard ODBC-based connectivity to Smartsheet. The Connector is compatible with version 3.8 of the ODBC specification.
+* Smartsheet-wide access control (ACL) is enforced and data access and retrieval via ODBC is subject to all Smartsheet's existing security mechanisms.
+* Interact with Smartsheet data dynamically, using Smartsheet as a live data source.
+* Create charts, graphs and other visualizations with data stored in one or more Smartsheet sheets or reports.
 
-<%= CONSTANT1 %>
+## Requirements
 
-## Section 1_A
+* Smartsheet Enterprise Plan and a user license 
+* MSFT Windows 7, 8 or Windows Server 2012
+* Tableau Desktop 8.2/8.3/9.x or Server 8.3.3/9.x
+* QlikView 11.2, Qlik Sense 1.1
+* Tibco Spotfire 6.x
+* Excel 2010, 2013 - Data Connection Wizard, MSFT Query, Power Query
 
-blah blah blah
+## Support
 
-## Section 1_B
+If you experience any difficulties, have questions or feature requests, please visit the [Smartsheet Help Center](http://www.google.com/url?q=http%3A%2F%2Fhelp.smartsheet.com%2F&sa=D&sntz=1&usg=AFQjCNEbdfiu-fKy65MgtzmQpKHSuzKbqw) for help information or to submit a question to Smartsheet.
 
-blah blah blah
+## Download
 
-### Section 1_B_1
+Download the most recent installer:
 
-blah blah blah
+<aside class="notice">If you are planning to use the Connector with Excel, get the one that matches your version of Microsoft Office (32 bit or 64 bit).</aside>
 
-# <span class="customTOCSectionHeading">Install & Configure</span>
+* [32 bit, version 1.1.26.1](https://www.google.com/url?q=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsmartsheet-platform%2Fsmartsheet_ldc_setup_32bit_1.1.26.1_Signed.msi&sa=D&sntz=1&usg=AFQjCNHrNbRs2IML5ntK6UgIyJ9KXbYe4A)
+* [64 bit, version 1.1.26.1](https://www.google.com/url?q=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsmartsheet-platform%2Fsmartsheet_ldc_setup_64bit_1.1.26.1_Signed.msi&sa=D&sntz=1&usg=AFQjCNFChAnbDYQWyMadY0eqjau6VQH7eQ)
 
-blah blah blah
+# <span class="customTOCSectionHeading">Configuration</span>
+
+## ODBC Driver and Windows proxy configuration (optional)
+
+Some organizations use a [proxy server](http://www.google.com/url?q=http%3A%2F%2Fen.wikipedia.org%2Fwiki%2FProxy_server&sa=D&sntz=1&usg=AFQjCNH-yoDzRb02SUbmrQAE0P1CAbmJfg) to access web content.  If you are using a proxy to access web content, the Smartsheet Live Data Connector will use your proxy server as well. By default the Smartsheet Live Data Connector will use the Windows / Internet Explorer’s proxy settings for the currently logged-in user.  You can check your proxy settings from “Internet Options” in your Control Panels. To do so, select the “Connections” tab, and then click on "LAN settings" at the bottom of the window:
+
+<img src="images/proxy/internetproperties.png" />
 
 # Section 1
 
