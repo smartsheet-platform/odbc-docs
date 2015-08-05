@@ -33,7 +33,7 @@ Follow the steps below if you'd like to run the documentation locally on your ma
 
 ### Learning about Markdown Syntax
  
-This API documentation is based upon [Slate](https://github.com/tripit/slate/) and uses Slate [markdown syntax](https://github.com/tripit/slate/wiki/Markdown-Syntax).
+This documentation is based upon [Slate](https://github.com/tripit/slate/) and uses Slate [markdown syntax](https://github.com/tripit/slate/wiki/Markdown-Syntax).
 
 ## License
 
