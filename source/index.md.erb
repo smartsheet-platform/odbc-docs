@@ -39,6 +39,7 @@ CREATED_DATE | DATETIME
 CREATED_BY  | CONTACT_LIST
 AUTO_NUMBER | TEXT_NUMBER | Columns of this system column type will include an [AutoNumberFormat object](#autonumberformat-object) that describes the mask used to generate the value.
 
+
 ## Overview
 
 The Smartsheet Live Data Connector (also known as the Smartsheet ODBC Driver) provides industry-standard connectivity between Smartsheet and third-party analytics tools.  It enables business users to interact with and visualize data stored in Smartsheet using business analytics and data visualization software such as Tableau, Spotfire, QlikView / Qlik Sense, Excel and others.
@@ -80,15 +81,94 @@ Some organizations use a [proxy server](http://www.google.com/url?q=http%3A%2F%2
 
 <img src="images/proxy/internetproperties.png" />
 
-# Section 1
+… and if you have a proxy configured, you will see it in your LAN settings (example):
 
-blah blah blah 
+<img src="images/proxy/lansettings.png" />
 
-<%= CONSTANT1 %>
+The Smartsheet Live Data Connector will use either the automatic configuration script in the “Automatic configuration” group box or the proxy server address in the “Proxy server” group box as valid proxy server configurations. However, please note that the Smartsheet Live Data Connector **will not** use the DHCP or DNS auto-discovery method due to poor performance in some network configurations (the “Automatically detect settings” checkbox).
 
-## Section 1_A
+If the Smartsheet Live Data Connector is running on a Windows Server where it is not impersonating a logged-in user (for example when it is running under the Tableau Server service) only the system default proxy settings will be used. Ask your Network Administrator for more information on [configuring Windows Server for proxy access](https://www.google.com/url?q=https%3A%2F%2Ftechnet.microsoft.com%2Fen-us%2Flibrary%2Fcc731131%2528v%3Dws.10%2529.aspx&sa=D&sntz=1&usg=AFQjCNGBdgEwVC4wvJY8FL1a3WKZB2qgOw).
 
-blah blah blah
+## Enabling logging (optional)
+
+If you run into any issues with the Connector, we may ask you to send us your log file to help identify and address the problem.  Enabling logging simply creates a text file on your computer and logs the Connector activity.   Note: because the log files will capture the details of what exactly is getting retrieved from Smartsheet, some potentially confidential data - e.g. sheet names, column names, etc. - may be logged.
+ 
+To enable logging, please locate the logging utility by clicking on Start > Programs > Smartsheet Live Data Connector, and click on "Enable Driver Logging":
+
+<img src="images/Screenshots/StartMenu.png" />
+
+Check "Enable logging" and click on "Folder" to specify the log destination:
+
+<img src="images/Screenshots/enableLogging.png" />
+
+Pick a destination folder and click "OK".  The easiest approach is to select your Desktop folder so you can easily find the log file later:
+
+
+<img src="images/Screenshots/destinationfolder.png" />
+
+Once the destination is selected, click "OK" to finish:
+
+<img src="images/Screenshots/destinationselected.png" />
+
+## Configuring a Smartsheet DSN (optional)
+
+<aside class="notice">If you have previously set up a Smartsheet ODBC Data Source Name you may skip this section.
+</aside>
+
+Some applications, like Tableau, allow using the Connector directly.  Others, like Excel, require to first set up a Data Source in Windows. 
+
+If you need to set up a Data Source, navigate to Start > Programs > Smartsheet Live Data Connector, and run “ODBC Data Source Admin”:
+
+<img src="images/Screenshots/StartMenu.png" />
+
+Click “Add…” to add a data source:
+
+<img src="images/Screenshots/addDSN.png" />
+
+Select “Smartsheet Live Data Connector” and click “Finish”:
+
+<img src="images/Screenshots/ssldc.png" />
+
+…and then fill in the details.  If your Smartsheet account does not permit using email and password for login, you can use the ["Use API Token for SSO login... {placeholder URL}"](placeholderURL) option instead. 
+
+<img src="images/Screenshots/configuresmartsheetdsn.png" />
+
+## Advanced Options Menu
+
+The **Advanced Options** menu provides controls to include additional row metadata and manage data conversion modes.  The menu can be accessed either at the time of using the Connector (e.g., from within Tableau):
+
+<img src="images/Screenshots/selectadvancedoptions.png" />
+
+... or when setting up an ODBC Data Source:
+
+<img src="images/Screenshots/ODBCDataAdminAdvancedOptions.png" />
+
+Click on the "Advanced options" link to open the menu:
+
+<img src="images/Screenshots/AdvancedOptions.png" />
+
+The **Advanced Options** menu has options for including extended metadata (such as Gantt attributes, if present, outline level, and discussions text) as additional columns. It also provides controls for advanced features and logging.
+ 
+**The following options are presented in this menu:**
+ 
+* Optional Content - extended metadata as additional columns
+* Enabling logging (similar to the option to enable logging in the Start menu)
+* Report cache - auto refresh settings
+* Data retrieval mode
+* SQL table names
+ 
+**Data retrieval mode has 3 options:**
+
+<aside class="notice">this section only applies to Text/Number columns</aside>
+ 
+* Always return text - returns all results as text
+* Use “majority” rule - returns numeric results only if more than half the column inputs are numeric, discarding all non-numeric input
+* Use “entirety” rule - returns numeric results only if 100% of the column inputs are numeric, otherwise returns all results as text
+ 
+* The SQL table names section is available to shorten names. By default the full path is appended to the sheet name. Unchecking this option will cause only the sheet/report name to be returned.
+
+
+
 
 # <span class="customTOCSectionHeading">Usage</span>
 
