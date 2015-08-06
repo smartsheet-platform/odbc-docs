@@ -12,6 +12,9 @@ search: false
 
 <% CONSTANT1 = "UPDATED! This is my string CONSTANT1." %>
 
+<% apiaccesstoken = "[Use API Token for SSO login](#connect-using-api-access-token-(for-sso-users))" %>
+
+
 # <span class="customTOCSectionHeading">Getting Started</span>
 
 <aside class="notice">This is a test note - notice</aside>
@@ -37,7 +40,7 @@ MODIFIED_DATE | DATETIME
 MODIFIED_BY | CONTACT_LIST
 CREATED_DATE | DATETIME
 CREATED_BY  | CONTACT_LIST
-AUTO_NUMBER | TEXT_NUMBER | Columns of this system column type will include an [AutoNumberFormat object](#autonumberformat-object) that describes the mask used to generate the value.
+
 
 
 ## Overview
@@ -70,10 +73,12 @@ Download the most recent installer:
 
 <aside class="notice">If you are planning to use the Connector with Excel, get the one that matches your version of Microsoft Office (32 bit or 64 bit).</aside>
 
-* [32 bit, version 1.1.26.1](https://www.google.com/url?q=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsmartsheet-platform%2Fsmartsheet_ldc_setup_32bit_1.1.26.1_Signed.msi&sa=D&sntz=1&usg=AFQjCNHrNbRs2IML5ntK6UgIyJ9KXbYe4A)
-* [64 bit, version 1.1.26.1](https://www.google.com/url?q=https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsmartsheet-platform%2Fsmartsheet_ldc_setup_64bit_1.1.26.1_Signed.msi&sa=D&sntz=1&usg=AFQjCNFChAnbDYQWyMadY0eqjau6VQH7eQ)
+* [32 bit, version 1.1.26.1](https://s3-us-west-2.amazonaws.com/smartsheet-platform/smartsheet_ldc_setup_32bit_1.1.26.1_Signed.msi)
+* [64 bit, version 1.1.26.1](https://s3-us-west-2.amazonaws.com/smartsheet-platform/smartsheet_ldc_setup_64bit_1.1.26.1_Signed.msi)
 
 # <span class="customTOCSectionHeading">Configuration</span>
+
+The Smartsheet live Data Connector contains several Advanced Options which provide some additional (optional) features. 
 
 ## ODBC Driver and Windows proxy configuration (optional)
 
@@ -87,12 +92,14 @@ Some organizations use a [proxy server](http://www.google.com/url?q=http%3A%2F%2
 
 The Smartsheet Live Data Connector will use either the automatic configuration script in the “Automatic configuration” group box or the proxy server address in the “Proxy server” group box as valid proxy server configurations. However, please note that the Smartsheet Live Data Connector **will not** use the DHCP or DNS auto-discovery method due to poor performance in some network configurations (the “Automatically detect settings” checkbox).
 
-If the Smartsheet Live Data Connector is running on a Windows Server where it is not impersonating a logged-in user (for example when it is running under the Tableau Server service) only the system default proxy settings will be used. Ask your Network Administrator for more information on [configuring Windows Server for proxy access](https://www.google.com/url?q=https%3A%2F%2Ftechnet.microsoft.com%2Fen-us%2Flibrary%2Fcc731131%2528v%3Dws.10%2529.aspx&sa=D&sntz=1&usg=AFQjCNGBdgEwVC4wvJY8FL1a3WKZB2qgOw).
+If the Smartsheet Live Data Connector is running on a Windows Server where it is not impersonating a logged-in user (for example when it is running under the Tableau Server service) only the system default proxy settings will be used. Ask your Network Administrator for more information on [configuring Windows Server for proxy access](https://technet.microsoft.com/en-us/library/cc731131%28v=ws.10%29.aspx).
 
 ## Enabling logging (optional)
 
-If you run into any issues with the Connector, we may ask you to send us your log file to help identify and address the problem.  Enabling logging simply creates a text file on your computer and logs the Connector activity.   Note: because the log files will capture the details of what exactly is getting retrieved from Smartsheet, some potentially confidential data - e.g. sheet names, column names, etc. - may be logged.
- 
+If you run into any issues with the Connector, we may ask you to send us your log file to help identify and address the problem.  Enabling logging simply creates a text file on your computer and logs the Connector activity. 
+
+<aside class="notice">Note: because the log files will capture the details of what exactly is getting retrieved from Smartsheet, some potentially confidential data - e.g. sheet names, column names, etc. - may be logged.</aside>
+
 To enable logging, please locate the logging utility by clicking on Start > Programs > Smartsheet Live Data Connector, and click on "Enable Driver Logging":
 
 <img src="images/Screenshots/StartMenu.png" />
@@ -112,10 +119,9 @@ Once the destination is selected, click "OK" to finish:
 
 ## Configuring a Smartsheet DSN (optional)
 
-<aside class="notice">If you have previously set up a Smartsheet ODBC Data Source Name you may skip this section.
-</aside>
+<aside class="notice">If you have already set up a Smartsheet ODBC Data Source Name you may <a href="#advanced-options-menu">skip to the next section</a>.</aside>
 
-Some applications, like Tableau, allow using the Connector directly.  Others, like Excel, require to first set up a Data Source in Windows. 
+Some applications, like Tableau, allow using the Connector directly.  Others, like Excel, Qlik, and Spotfire require to first set up a Data Source in Windows. 
 
 If you need to set up a Data Source, navigate to Start > Programs > Smartsheet Live Data Connector, and run “ODBC Data Source Admin”:
 
@@ -129,7 +135,7 @@ Select “Smartsheet Live Data Connector” and click “Finish”:
 
 <img src="images/Screenshots/ssldc.png" />
 
-…and then fill in the details.  If your Smartsheet account does not permit using email and password for login, you can use the ["Use API Token for SSO login... {placeholder URL}"](placeholderURL) option instead. 
+…and then fill in the details.  If your Smartsheet account does not permit using email and password for login, you can use the [Use API Token for SSO login](#connect-using-api-access-token-(for-sso-users)) option instead. 
 
 <img src="images/Screenshots/configuresmartsheetdsn.png" />
 
@@ -145,7 +151,7 @@ The **Advanced Options** menu provides controls to include additional row metada
 
 Click on the "Advanced options" link to open the menu:
 
-<img src="images/Screenshots/AdvancedOptions.png" />
+<img src="images/Screenshots/AdvancedOptionsMenu.png" />
 
 The **Advanced Options** menu has options for including extended metadata (such as Gantt attributes, if present, outline level, and discussions text) as additional columns. It also provides controls for advanced features and logging.
  
@@ -159,7 +165,7 @@ The **Advanced Options** menu has options for including extended metadata (such 
  
 **Data retrieval mode has 3 options:**
 
-<aside class="notice">this section only applies to Text/Number columns</aside>
+<aside class="notice">This section only applies to Text/Number columns</aside>
  
 * Always return text - returns all results as text
 * Use “majority” rule - returns numeric results only if more than half the column inputs are numeric, discarding all non-numeric input
@@ -167,18 +173,310 @@ The **Advanced Options** menu has options for including extended metadata (such 
  
 * The SQL table names section is available to shorten names. By default the full path is appended to the sheet name. Unchecking this option will cause only the sheet/report name to be returned.
 
+## Enabling Custom SQL Functions (optional)
+
+In the Advanced Options menu, scroll down to the bottom of the “Optional content” list and you will see an “Enable custom SQL functions” checkbox:
+
+<img src="images/Screenshots/customsqlfunctions.png" />
+
+Checking this option will enable the following SQL functions:
+
+
+Function | Tableau Example
+ ----|----
+attachments_count() - *returns integer* | RAWSQL_INT('attachments_count(%1)',[_Rowlocator])
+discussions_count() - *returns integer* | RAWSQL_INT('discussions_count(%1)',[_Rowlocator])
+discussions_text() - *returns text* | RAWSQL_STR('discussions_text(%1)',[_Rowlocator])
+parent_id() - *returns text* | RAWSQL_STR('parent_id(%1)',[_Rowlocator])
+child_ids() - *returns text* (comma separated values) | RAWSQL_STR('child_ids(%1)',[_Rowlocator])
+outline_level() - *returns integer* | RAWSQL_INT('outline_levle(%1)',[_Rowlocator])
+sheet_id() - *returns text* | RAWSQL_STR('sheet_id(%1)',[_Rowlocator])
+sheet_name() - *returns text* | RAWSQL_STR('sheet_name(%1)',[_Rowlocator])
+predecessor_ids() - *returns text* (comma separated values) | RAWSQL_STR('predecessor_ids(%1)',[_Rowlocator])
+predecessor_tasks() - *returns text*| RAWSQL_STR('predecessor_tasks(%1)',[_Rowlocator])
+duration_seconds() - *returns double* | RAWSQL_REAL('duration_seconds(%1)',[_Rowlocator])
+
+## Column Type Conversion Logic
+
+Since Smartsheet allows for any data to be stored in a cell despite the column type, the Connector uses the following logic to process and convert Smartsheet data:
+
+* Text/Number: The Text/Number column defaults to the majority rule. This means that numeric values are returned if more than half of the column inputs are numeric. All other values are discarded. This rule can be changed in the “Advanced Options” section during login.
+ 
+* Date, time, and datetime: Date, time, and datetime columns have a storage class of TEXT, which means they are not converted to a date until a query is ran.
+ 
+* Picklists: Picklists probe for types but they use a precise rule (100%). So, one text string in a list of integers would cause the picklist to display text. All of the state picklists resolve to text (5-State Signal, 6-State Hearts, etc..).
+ 
+* Checkbox: Checkbox (or any on/off column) values are stored as a Boolean and uses an integer storage class. Any text data in a checkbox column would be lost. An exception to this rule would be a list to what equates to Boolean data (on/off, true/false, 0/1) i.e. Stars and Flags. These would be stored in a Boolean and the same rules apply.
 
 
 
 # <span class="customTOCSectionHeading">Usage</span>
 
-blah blah blah
+## Tableau Desktop
 
-# Section 1
+<aside class="notice">This walkthrough uses Tableau Desktop version 9, the menus and options for Tableau Desktop version 8 are slightly different.</aside>
 
-## Section 1_A
+Connect to the Smartsheet Data Source by choosing the “To a server” > "Other Databases (ODBC)" option.  If you do not see the ODBC option listed here, click on the “More Servers…” and choose it from the list from additional options:
 
-blah blah blah
+<img src="images/Screenshots/othersourcesodbc.png" />
+
+Under "Connect Using" pick "Driver", and then select "Smartsheet Live Data Connector" from the Driver drop-down menu:
+
+<img src="images/Screenshots/selectdsn.png" />
+
+… and click "Connect".
+
+### Connect using Email Address and Password
+
+Connect to Smartsheet by entering your Smartsheet credentials into the "Smartsheet Login" dialog box:
+
+<img src="images/Screenshots/sslogin.png" />
+
+### Connect using API Access Token (for SSO users)
+
+If your Smartsheet account requires single sign-on (e.g., via SAML, Google or MSFT Azure AD) and does not allow logins using email and password, you can use a Smartsheet API Access Token instead.  
+ 
+First, you need to create a token - it's easy with just a couple of clicks.  In Smartsheet, navigate to Account > Personal Settings:
+
+<img src="images/Screenshots/ssSettings.png" />
+
+In Personal Settings, select "API Access" and click on "Generate new access token":
+
+<img src="images/Screenshots/generatenewaccesstoken.png" />
+
+Give the new token an arbitrary, descriptive name and click "OK":
+
+<img src="images/Screenshots/nameToken.png" />
+
+<aside class="warning">Make sure you copy the token before you close the window because you won't be able to view the token again (for security reasons)</aside>
+
+<img src="images/Screenshots/copyToken.png" />
+
+Now go back to your "Smartsheet Login" window and click on the "Use API token for SSO login" option:
+
+<img src="images/Screenshots/useAPIToken.png" />
+
+… and paste your access token:
+
+<img src="images/Screenshots/pasteToken.png" />
+
+Upon successful login, confirm connection information:
+
+<img src="images/Screenshots/confirmConnection.png" />
+
+### Creating Workbooks and Reports
+
+Browse or search Sheets.  You can search by Sheet or Report name, or by any portion of their path (name of parent Workspace or Folder).
+
+<aside class="notice">NOTE: The search feature is <b>case-sensitive</b></aside>
+
+<img src="images/Screenshots/searchSheets.png" />
+
+Then drag and drop each Sheet or Report you need to the upper right pane:
+
+<img src="images/Screenshots/dragAndDrop.png" />
+
+If you are using multiple sheets or reports, and they have columns in common, Tableau will try automatically figure out how to map the selected Sheets and will create a default relationship between them.  You can modify the type of relationship (JOIN) at this time.  Once you are done, click "Go to Worksheet" at the bottom of the application to proceed to the visualization design step:
+
+<img src="images/Screenshots/goToWorksheet.png" />
+
+The next step is to design and configure your report:
+
+<img src="images/Screenshots/design.png" />
+
+Finally, use Tableau Dashboard to create a compelling visual representation of the data:
+
+<aside class="notice">NOTE: Please contact Tableau directly for any questions relating to using their software.</aside>
+
+<img src="images/Screenshots/visual.png" />
+
+### Re-opening Saved Workbooks
+
+Tableau Desktop does not save login credentials by design (for security reasons), so the next time you launch Tableau Desktop and re-open a previously saved workbook, in Tableau 8 you will see an error message:
+
+<img src="images/Screenshots/tableau8Error.png" />
+
+Click "Yes" and re-enter your Smartsheet password.  Or, if you are using an [API Access token](#connect-using-api-access-token-(for-sso-users)) to connect, paste the token into the password field instead:
+
+<img src="images/Screenshots/editConnection.png" />
+
+In Tableau 9 you will see a different message:
+
+<img src="images/Screenshots/reenteruserandpassword.png" />
+
+Click "Yes" and re-enter your login credentials. Or, if you are using an [API Access token](#connect-using-api-access-token-(for-sso-users)) to connect, paste the token into the password field instead.
+
+## Tableau Server
+
+This section covers publishing workbooks to a server using Tableau. If you do not need to publish workbooks or do not have a Tableau server, you may skip this section.
+
+### Publishing Workbooks to Tableau Server
+
+A typical Tableau Server workflow starts with [creating a workbook / report in Tableau Desktop](#creating-workbooks-and-reports).  Once you create a workbook in Tableau Desktop, you can publish it to a Tableau Server for others to use.
+
+Open the "Server" menu option and select "Publish Workbook…":
+
+<img src="images/Screenshots/publishworkbook.png" />
+
+If you are not already logged in to your Tableau Server, you will be prompted to do so. 
+
+<aside class="notice">For information on how to access your Tableau Server, please contact your organization's IT / Tableau administrator.</aside>
+
+Enter your server:
+
+<img src="images/Screenshots/enterServer.png" />
+
+Then enter your login credentials:
+
+<img src="images/Screenshots/serverSignin.png" />
+
+Once logged in, at the next step you will have an opportunity to name the workbook, specify where to save the new workbook on the server, and manage the permissions and access for the published workbook.  In terms of access to workbook data, you have two options: 
+
+1. Have users provide their own credentials (which requires they have a Smartsheet login and have permissions in Smartsheet to access the data you included in your workbook).
+
+2. Access the data you have published without having to provide Smartsheet credentials.
+
+The second option is likely to be the most common one.  Tableau Server makes it possible to store your login credentials with your published workbook.  To choose this option, click the "Authentication…" button:
+
+<img src="images/Screenshots/publishtoserver.png" />
+
+At the next step, you may have to scroll to the right to see the Authentication options:
+
+<img src="images/Screenshots/scrollRight.png" />
+
+Finally, in the Authentication dropdown, select "Embedded password":
+
+<img src="images/Screenshots/embeddedPassword.png" />
+
+To save and finish, click "OK".
+
+## Tibco Spotfire
+
+<aside class="notice">Spotfire installation instructions can be found <a href="http://spotfire.tibco.com/learn/spotfire-desktop-quickstart#installing-spotfire-desktop">here</a>. Additional resources for using Spotfire can be found <a href="http://spotfire.tibco.com/learn/spotfire-desktop-quickstart#getting-started-with-spotfire">here</a>.</aside>
+
+<aside class="warning">To use Tibco Spotfire with the Live Data Connector, you must <a href="#configuring-a-smartsheet-dsn-(optional)">configure a Data Source</a> first.</aside>
+
+Launch Spotfire and then click on “Add Data” > “Add Data Connection” > "Other":
+
+<img src="images/Spotfire/AddData.png" />
+
+Click on “Add” then select “Database…” at the bottom of the list:
+
+<img src="images/Spotfire/addOtherDatabase.png" />
+
+Choose “Odbc Data Provider” then click “Configure…”:
+
+<img src="images/Spotfire/configureOdbc.png" />
+
+Select the [DSN you configured earlier](#configuring-a-smartsheet-dsn-(optional)). Fill in your Smartsheet credentials to log in.  Or, if you are using an [API Access token](#connect-using-api-access-token-(for-sso-users)) to connect, paste the token into the password field instead:
+
+<img src="images/Spotfire/logIntoDsn.png" />
+
+Select a Table and all columns needed, set a Data Source Name, then click “OK”:
+
+<img src="images/Spotfire/dataSourceName.png" />
+
+Select the Data table you just set up and click “OK” to import the data (the Name will be the same as the “Data source name” you entered in the last step):
+
+<img src="images/Spotfire/finalizeDataSource.png" />
+
+Finally, use Spotfire to create a nice visualization of the data:
+
+<aside class="notice">For any questions related to using Spotfire, you can visit their support page <a href="http://spotfire.tibco.com/learn/spotfire-desktop-quickstart#getting-started-with-spotfire">here</a>.</aside>
+
+<img src="images/Spotfire/visual.png" />
+
+
+
+## Qlik Sense
+
+<aside class="notice">Qlik Sense installation instructions can be found <a href="https://community.qlik.com/docs/DOC-7140">here.</a></aside>
+<aside class="warning">To use Qlik Sense with the Live Data Connector, you must <a href="#configuring-a-smartsheet-dsn-(optional)">configure a Data Source</a> first.</aside>
+
+Open up Qlik then click on “Create a new app” on the dialog that appears
+
+<img src="images/QlikSense/5openqlik.png" />
+
+Enter a name for your app and click “Create”:
+
+<img src="images/QlikSense/6createApp.png" />
+
+Click on “Open app”:
+
+<img src="images/QlikSense/7openApp.png" />
+
+Click on “Add data”:
+
+<img src="images/QlikSense/8addData.png" />
+
+Then click on “ODBC”:
+
+<img src="images/QlikSense/9ODBC.png" />
+
+Create a new connection by selecting the DSN you configured earlier.  Fill in your Smartsheet credentials to log in.  Or, if you are using an [API Access token](#connect-using-api-access-token-(for-sso-users)) to connect, paste the token into the password field instead:
+
+<img src="images/QlikSense/10userLogin.png" />
+
+Select the data you want, then click “Load and finish”:
+
+<img src="images/QlikSense/11addSheetsData.png" />
+
+After the data is loaded, click on “Close”:
+
+<img src="images/QlikSense/12dataSuccessful.png" />
+
+After the data is loaded, click on the new data sheet you just created:
+
+<img src="images/QlikSense/14openSheet.png" />
+
+Finally, use the data to create a visualization:
+
+<img src="images/QlikSense/15visual.png" />
+
+## QlikView
+
+<aside class="warning">To use QlikView with the Live Data Connector, you must <a href="#configuring-a-smartsheet-dsn-(optional)">configure a Data Source</a> first.</aside>
+
+Open up ClickView and click on “File”, then click “New”:
+
+<img src="images/QlikView/fileNew.png" />
+
+After the “Getting Started Wizard:” dialog starts, click the “X” in the upper right-hand corner:
+
+<img src="images/QlikView/gettingStartedWizard.png" />
+
+After the dialog is closed, click on “File” again, then click on “Edit Script…”:
+
+<img src="images/QlikView/editScript.png" />
+
+On the next screen, select “ODBC” in the “Database” dropdown, then click on “Connect…” (you can click on “Select…” as well, they open the same dialog box):
+
+<img src="images/QlikView/connectToDatabase.png" />
+
+On the next dialog, select the Data Source you set up (If it doesn’t show, click the “Show User DSNs” checkbox). Fill in your Smartsheet credentials to log in.  Or, if you are [using an API Access token to connect](#connect-using-api-access-token-(for-sso-users)), paste the token into the password field instead:
+
+<img src="images/QlikView/logIntoSsDsn.png" />
+
+Click on “Select”:
+
+<img src="images/QlikView/selectSheet.png" />
+
+Select the Tables and Columns you would like then click “OK”:
+
+<img src="images/QlikView/selectTablesAndColumns.png" />
+
+After you’re finishing adding tables and your script is ready, click “OK”:
+
+<img src="images/QlikView/finishedScript.png" />
+
+Your data is now loaded, you can begin making graphs and charts:
+
+<img src="images/QlikView/createGraphs.png" />
+
+If you add new data to your script after the initial setup, you’ll need to be sure you reload the script:
+
+<img src="images/QlikView/reloadScript.png" />
+
 
 # <span class="customTOCSectionHeading">FAQ</span>
 
