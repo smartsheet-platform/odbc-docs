@@ -559,7 +559,7 @@ Finally, enter your Smartsheet credentials when prompted:
 * <a href="#q6">What is the max number of tables that the Smartsheet Live Data Connector will support in a join?</a>
 * <a href="#q7">What SQL dialect does the Smartsheet Live Data Connector support?</a>
 * <a href="#q8">Why aren’t the Tableau DATEDIFF and DATEADD functions working correctly?</a>
-* <a href="#q9">Tableau’s Fiscal Calendar Start functionality doesn’t work correctly. Any time I select a different fiscal year start month, it loses the year and quarter data for any month after the start month, through the end of the calendar year. For example, if I choose August as the start of the fiscal year, the months of August through December show Null values for year and quarter. January through July, however, show up correctly.</a>
+* <a href="#q9">Why doesn't Tableau’s Fiscal Calendar Start functionality work correctly?</a>
 * <a href="#q10">I tried publishing a Smartsheet-based Workbook and got a message that the functions TODAY() and NOW() will work differently because the server and Smartsheet are in the different timezones.</a>
 * <a href="#q11">My Smartsheet data does not appear to refresh on Tableau Server.</a>
 * <a href="#q12">I am using Tableau Desktop with a datasource published on my Tableau Server, but getting an error “Unknown data source class 'SQLite’”.</a>
@@ -648,7 +648,9 @@ Replace StartDateField and EndDateField with your actual columns:
 
 [Back to FAQ](#faq)</br></br></br></br>
 
-<span class="faq" id="q9">Tableau's Fiscal Calendar Start functionality doesn't work correctly.  Any time I select a different fiscal year start month, it loses the year and quarter data for any month after the start month, through the end of the calendar year.  For example, if I choose August as the start of the fiscal year, the months of August through December show Null values for year and quarter.  January through July, however, show up correctly.</span>
+<span class="faq" id="q9">Why doesn't Tableau's Fiscal Calendar Start functionality work correctly?</span>
+
+Any time I select a different fiscal year start month, it loses the year and quarter data for any month after the start month, through the end of the calendar year.  For example, if I choose August as the start of the fiscal year, the months of August through December show Null values for year and quarter.  January through July, however, show up correctly.
 
 When communicating with the Smartsheet Live Data Connector, Tableau expects (as an example) that if you ask for the 15th month of 2014 that the Connector will return a date of the 3rd month of 2015. The Connector's date function, however, sees the 15th month as a bad value and returns NULL instead.  To work around this limitation, create a calculated field in Tableau:
 
