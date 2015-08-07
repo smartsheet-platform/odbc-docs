@@ -389,6 +389,17 @@ h1.section-header, h2.section-header, h3.section-header, h4.section-header {
   &>h1, &>h2, &>div {
     clear:both;
   }
+    
+  .faq {
+    @extend %header-font;
+    font-size: 20px;
+    //margin-top: 4em;
+    margin-bottom: 0;
+    //border-top: 1px solid #ccc;
+    padding-top: 1.2em;
+    padding-bottom: 1.2em;
+  }    
+    
 
   h1 {
     @extend %header-font;
