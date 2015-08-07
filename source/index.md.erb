@@ -480,7 +480,7 @@ When prompted, fill in your Smartsheet login credentials.  If your Smartsheet ac
 
 <img src="images/ExcelDataConnectionWizard/4ssLogin.png" /></br></br>
 
-Once connected to Smartsheet, select your desired sheet or report and click "Finish":
+Once connected to Smartsheet, select your sheet or report and click "Finish":
 
 <img src="images/ExcelDataConnectionWizard/5selectSheet.png" /></br></br>
 
@@ -565,9 +565,10 @@ Finally, enter your Smartsheet credentials when prompted:
 * <a href="#q12">I am using Tableau Desktop with a datasource published on my Tableau Server, but getting an error “Unknown data source class 'SQLite’”.</a>
 * <a href="#q13">I am seeing “Tableau identified limitations…” warning message.</a>
 * <a href="#q14">How do I get Excel to Auto-Refresh Smartsheet Data?</a>
-* <a href="#q15">I am getting an error message trying to configure or delete a DSN - “The setup routines for the … could not be found. Please reinstall the driver.”</a>
+* <a href="#q15">I am getting an error message trying to configure or delete a DSN - “The setup routines for the … could not be found. Please reinstall the driver.”</a></br></br></br></br>
 
-<span class="faq" id="q1"> Why am I seeing this error - "Unexpected error", when expanded says that "ODBC is not enabled for your account"?</span>
+
+<span class="faq" id="q1">Why am I seeing this error - "Unexpected error", when expanded says that "ODBC is not enabled for your account"?</span>
 
 <img src="images/FAQ/unexpectedError.png" /></br></br>
 
@@ -575,7 +576,7 @@ Finally, enter your Smartsheet credentials when prompted:
 
 This is because ODBC access has not been enabled for your Smartsheet account.  See the [Support](#support) section and contact the team to enable access.
 
-[Back to FAQ](#faq)
+[Back to FAQ](#faq)</br></br></br></br>
 
 <span class="faq" id="q2">My date columns contain mixed milestone names (text) and dates, but on import into Tableau all text data is lost. How can I see this information?</span>
 
@@ -583,19 +584,19 @@ Date and Time columns have a storage class of text in the Live Data Connector. T
 
 <img src="images/FAQ/lostDataTableau.png" /></br></br>
 
-[Back to FAQ](#faq)
+[Back to FAQ](#faq)</br></br></br></br>
 
 <span class="faq" id="q3">Does my Smartsheet data need to be formatted in a certain way to be compatible with Tableau?</span>
 
 Spreadsheet data may require some formatting to work with Tableau.  Tableau has created a guide for Excel users, and much of it apply to Smartsheet as well because of similarities in how data may be structured in Excel and Smartsheet.  See [Preparing your Excel data for Tableau](http://kb.tableau.com/articles/knowledgebase/preparing-excel-files-analysis) knowledge base article.
 
-[Back to FAQ](#faq)
+[Back to FAQ](#faq)</br></br></br></br>
 
 <span class="faq" id="q4">When I use Tableau Desktop, why do I have to re-enter my Smartsheet credentials every time I re-open Tableau?</span>
 
 Tableau Desktop does not save user login credentials by design, as a security precaution.  It is a feature of Tableau Desktop, not a feature of the Smartsheet Live Data Connector.  To re-open previously saved Tableau Desktop workbooks, see [this section](#re-opening-saved-workbooks).
 
-[Back to FAQ](#faq)
+[Back to FAQ](#faq)</br></br></br></br>
 
 <span class="faq" id="q5">Why am I getting an "invalid username or password" error when trying to re-open a previously saved Tableau Desktop workbook?</span>
 
@@ -603,19 +604,19 @@ Tableau Desktop does not save user login credentials by design, as a security pr
 
 Please see [this FAQ item](#when-i-use-tableau-desktop,-why-do-i-have-to-re-enter-my-smartsheet-credentials-every-time-i-re-open-tableau?).
 
-[Back to FAQ](#faq)
+[Back to FAQ](#faq)</br></br></br></br>
 
 <span class="faq" id="q6">What is the max number of tables that the Smartsheet Live Data Connector will support in a join?</span>
 
 The Smartsheet Live Data Connector will support up to 64 tables (sheets) in a single join.
 
-[Back to FAQ](#faq)
+[Back to FAQ](#faq)</br></br></br></br>
 
 <span class="faq" id="q7">What SQL dialect does the Smartsheet Live Data Connector support?</span>
 
 The Smartsheet Live Data Connector uses an implementation of SQLite to locally store and query Smartsheet sheets and reports. As such, the Live Data Connector can interpret native SQL as understood by SQLite. The SQL syntax used by SQLite is well documented on the SQLite website: [https://www.sqlite.org/lang.html](https://www.sqlite.org/lang.html). In addition to the SQLite core functions [https://www.sqlite.org/lang_corefunc.html](https://www.sqlite.org/lang_corefunc.html), the Live Data Connector also supports a variety of functions which expose sheet, column and cell metadata through native SQL. Those functions are described above.
 
-[Back to FAQ](#faq)
+[Back to FAQ](#faq)</br></br></br></br>
 
 <span class="faq" id="q8">Why aren't the Tableau DATEDIFF and DATEADD functions working correctly?</span>
 
@@ -645,7 +646,7 @@ Replace StartDateField and EndDateField with your actual columns:
 
 <img src="images/FAQ/dateDiffCalc.png" /></br></br>
 
-[Back to FAQ](#faq)
+[Back to FAQ](#faq)</br></br></br></br>
 
 <span class="faq" id="q9">Tableau's Fiscal Calendar Start functionality doesn't work correctly.  Any time I select a different fiscal year start month, it loses the year and quarter data for any month after the start month, through the end of the calendar year.  For example, if I choose August as the start of the fiscal year, the months of August through December show Null values for year and quarter.  January through July, however, show up correctly.</span>
 
@@ -662,7 +663,7 @@ The result should look like this:
 
 <img src="images/FAQ/fiscalCalendar.png" /></br></br>
 
-[Back to FAQ](#faq)
+[Back to FAQ](#faq)</br></br></br></br>
 
 <span class="faq" id="q10">I tried publishing a Smartsheet-based Workbook and got a message that the functions TODAY() and NOW() will work differently because the server and Smartsheet are in the different timezones.</span>
 
@@ -672,13 +673,13 @@ Luckily, as with `DATEADD` and `DATEDIFF` we can modify these calculations to re
 
 The way most other Tableau users address this is by picking a common time zone and modifying the calculations to always use that time zone. **Our recommendation is to replace `NOW()` with your own function that returns UTC if you need to be consistent across time zones** (all other Smartsheet dates will also get returned in UTC). 
 
-[Back to FAQ](#faq)
+[Back to FAQ](#faq)</br></br></br></br>
 
 <span class="faq" id="q11">My Smartsheet data does not appear to refresh on Tableau Server.</span>
 
 There is a known issue with Tableau Server prior to version 8.3.3 where the manual refresh (using F5) does not refresh any data from Smartsheet. The issue has been addressed in Tableau Server 8.3.3.
 
-[Back to FAQ](#faq)
+[Back to FAQ](#faq)</br></br></br></br>
 
 <span class="faq" id="q12">I am using Tableau Desktop with a datasource published on my Tableau Server, but getting an error "Unknown data source class 'SQLite'".</span>
 
@@ -692,7 +693,7 @@ There is a known issue with Tableau and Smartsheet Live Data Connector where Tab
 6. Log back into Tableau Server, and you’ll see the data source there.
 7. Select the data source and you’ll get the following message: "Unknown data source class 'SQLite'"
 
-[Back to FAQ](#faq)
+[Back to FAQ](#faq)</br></br></br></br>
 
 <span class="faq" id="q13">I am seeing "Tableau identified limitations…" warning message.</span>
 
@@ -710,7 +711,7 @@ This may happen for one of two reasons:
  
 **In both instances, the solution is to uninstall your Smartsheet Live Data Connector(s) and do a clean install of the Connector**, insuring that the .tdc file is now installed into the Tableau directory.
 
-[Back to FAQ](#faq)
+[Back to FAQ](#faq)</br></br></br></br>
 
 <span class="faq" id="q14">How do I get Excel to Auto-Refresh Smartsheet Data?</span>
 
@@ -724,7 +725,7 @@ After that, a dialog will open with several settings for refreshing. After you�
 
 <img src="images/FAQ/excelAutoRefresh.png" /></br></br>
 
-[Back to FAQ](#faq)
+[Back to FAQ](#faq)</br></br></br></br>
 
 <span class="faq" id="q15">I am getting an error message trying to configure or delete a DSN - "The setup routines for the … could not be found.  Please reinstall the driver."</span>
 
@@ -744,5 +745,5 @@ If your DSN is a "user" DSN (most likely) configured for a 64-bit driver, naviga
 
 <img src="images/FAQ/registryeditor.png" />
 
-[Back to FAQ](#faq)
+[Back to FAQ](#faq)</br></br></br></br>
 
