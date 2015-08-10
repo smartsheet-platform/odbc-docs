@@ -1,4 +1,852 @@
+<!doctype html>
 <html>
-<head></head>
-<body>[content coming soon]</body>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="shortcut icon" href="images/favicon.ico" type="image/vnd.microsoft.icon">
+    <title>Smartsheet Live Data Connector</title>
+
+    <link href="stylesheets/screen.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" type="text/css" media="print" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+      <script src="javascripts/all_nosearch.js" type="text/javascript"></script>
+
+  </head>
+
+  <body class="index">
+	<div class="navbar-container">
+	  <nav class="navbar">
+		<a class="logo-container" href="#">
+			<div class="logo"></div>
+		</a>
+		<ul>
+			<li>
+			  <a href="https://www.smartsheet.com/apps/smartsheet-odbc" target="_blank">
+			    Smartsheet App Gallery
+			  </a>
+			</li>
+		</ul>
+	  </nav>
+	</div>
+    <a href="#" id="nav-button" class>
+      <img src="images/navbar.png">
+    </a>
+    <div class="page-wrapper">
+		<div class="tocify-wrapper">
+		    <ul class="search-results"></ul>
+		  <div id="toc">
+		  </div>
+		</div>
+		<div class="content_body">
+		  <div class="dark-box"></div>
+		  <div class="content">
+			<h1 id="getting-started"><span class="customTOCSectionHeading">Getting Started</span></h1>
+
+<aside class="notice">Last updated: 08/07/2015</aside>
+
+<h1 id="overview">Overview</h1>
+
+<p>The Smartsheet Live Data Connector (also known as the Smartsheet ODBC Driver) provides industry-standard connectivity between Smartsheet and third-party analytics tools.  It enables business users to interact with and visualize data stored in Smartsheet using business analytics and data visualization software such as Tableau, Spotfire, QlikView / Qlik Sense, Excel and others.</p>
+
+<p>Benefits of using the Live Data Connector include, but not limited to, the following:</p>
+
+<ul>
+<li>Industry-standard ODBC-based connectivity to Smartsheet. The Connector is compatible with version 3.8 of the ODBC specification.</li>
+<li>Smartsheet-wide access control (ACL) is enforced and data access and retrieval via ODBC is subject to all Smartsheet&rsquo;s existing security mechanisms.</li>
+<li>Interact with Smartsheet data dynamically, using Smartsheet as a live data source.</li>
+<li>Create charts, graphs and other visualizations with data stored in one or more Smartsheet sheets or reports.</li>
+</ul>
+
+<h1 id="requirements">Requirements</h1>
+
+<ul>
+<li>Smartsheet Enterprise Plan and a user license </li>
+<li>MSFT Windows 7, 8 or Windows Server 2012</li>
+<li>Tableau Desktop 8.2/8.3/9.x or Server 8.3.3/9.x</li>
+<li>QlikView 11.2, Qlik Sense 1.1</li>
+<li>Tibco Spotfire 6.x</li>
+<li>Excel 2010, 2013 - Data Connection Wizard, MSFT Query, Power Query</li>
+</ul>
+
+<h1 id="support">Support</h1>
+
+<p>If you experience any difficulties, have questions or feature requests, please visit the <a href="http://help.smartsheet.com/">Smartsheet Help Center</a> for help information or to submit a question to Smartsheet.</p>
+
+<h1 id="download">Download</h1>
+
+<p>Download the most recent installer:</p>
+
+<aside class="notice">If you are planning to use the Connector with Excel, get the one that matches your version of Microsoft Office (32 bit or 64 bit).</aside>
+
+<ul>
+<li><a href="https://s3-us-west-2.amazonaws.com/smartsheet-platform/smartsheet_ldc_setup_32bit_1.1.26.1_Signed.msi">32 bit, version 1.1.26.1</a></li>
+<li><a href="https://s3-us-west-2.amazonaws.com/smartsheet-platform/smartsheet_ldc_setup_64bit_1.1.26.1_Signed.msi">64 bit, version 1.1.26.1</a></li>
+</ul>
+
+<h1 id="configuration"><span class="customTOCSectionHeading">Configuration</span></h1>
+
+<aside class="notice">The Smartsheet live Data Connector contains several Advanced Options which provide some additional features.</aside>
+
+<h1 id="windows-proxy-configuration-(optional)">Windows Proxy Configuration (optional)</h1>
+
+<p>Some organizations use a <a href="https://en.wikipedia.org/wiki/Proxy_server">proxy server</a> to access web content.  If you are using a proxy to access web content, the Smartsheet Live Data Connector will use your proxy server as well. You can check your proxy settings from “Internet Options” in your Control Panels. To do so, select the “Connections” tab, and then click on &ldquo;LAN settings&rdquo; at the bottom of the window:</p>
+
+<aside class="notice">By default the Smartsheet Live Data Connector will use the Windows / Internet Explorer’s proxy settings for the currently logged-in user.</aside>
+
+<p><img src="images/proxy/internetproperties.png" /></br></br></p>
+
+<p>… and if you have a proxy configured, you will see it in your LAN settings (example):</p>
+
+<p><img src="images/proxy/lansettings.png" /></br></br></p>
+
+<p>The Smartsheet Live Data Connector will use either the automatic configuration script in the “Automatic configuration” group box or the proxy server address in the “Proxy server” group box as valid proxy server configurations. </p>
+
+<aside class="warning">Note: The Smartsheet Live Data Connector <b>will not</b> use the DHCP or DNS auto-discovery method due to poor performance in some network configurations (the “Automatically detect settings” checkbox).</aside>
+
+<p>If the Smartsheet Live Data Connector is running on a Windows Server where it is not impersonating a logged-in user (for example when it is running under the Tableau Server service) only the system default proxy settings will be used. Ask your Network Administrator for more information on <a href="https://technet.microsoft.com/en-us/library/cc731131%28v=ws.10%29.aspx">configuring Windows Server for proxy access</a>.</p>
+
+<h1 id="enabling-logging-(optional)">Enabling logging (optional)</h1>
+
+<p>If you run into any issues with the Connector, we may ask you to send us your log file to help identify and address the problem.  Enabling logging simply creates a text file on your computer and logs the Connector activity.</p>
+
+<aside class="notice">Note: because the log files will capture the details of what exactly is getting retrieved from Smartsheet, some potentially confidential data - e.g. sheet names, column names, etc. - may be logged.</aside>
+
+<p>To enable logging, please locate the logging utility by clicking on Start &gt; Programs &gt; Smartsheet Live Data Connector, and click on &ldquo;Enable Driver Logging&rdquo;:</p>
+
+<p><img src="images/Screenshots/StartMenu.png" /></br></br></p>
+
+<p>Check &ldquo;Enable logging&rdquo; and click on &ldquo;Folder&rdquo; to specify the log destination:</p>
+
+<p><img src="images/Screenshots/enableLogging.png" /></br></br></p>
+
+<p>Pick a destination folder and click &ldquo;OK&rdquo;.  <strong>The easiest approach is to select your Desktop folder so you can easily find the log file later</strong>:</p>
+
+<p><img src="images/Screenshots/destinationfolder.png" /></br></br></p>
+
+<p>Once the destination is selected, click &ldquo;OK&rdquo; to finish:</p>
+
+<p><img src="images/Screenshots/destinationselected.png" /></br></br></p>
+
+<h1 id="configuring-a-smartsheet-dsn-(optional)">Configuring a Smartsheet DSN (optional)</h1>
+
+<aside class="success">If you have already set up a Smartsheet ODBC Data Source Name you may <a href="#advanced-options-menu">skip to the next section</a>.</aside>
+
+<aside class="notice">Some applications, like Tableau, allow using the Connector directly. Others require to first set up a Data Source in Windows.</aside>
+
+<p>If you need to set up a Data Source, navigate to Start &gt; Programs &gt; Smartsheet Live Data Connector, and run “ODBC Data Source Admin”:</p>
+
+<p><img src="images/Screenshots/StartMenu.png" /></br></br></p>
+
+<p>Click “Add…” to add a data source:</p>
+
+<p><img src="images/Screenshots/addDSN.png" /></br></br></p>
+
+<p>Select “Smartsheet Live Data Connector” and click “Finish”:</p>
+
+<p><img src="images/Screenshots/ssldc.png" /></br></br></p>
+
+<p>…and then fill in the details.  If your Smartsheet account does not permit using email and password for login, you can use the <a href="#connect-using-api-access-token-(for-sso-users)">Use API Token for SSO login</a> option instead. </p>
+
+<p><img src="images/Screenshots/configuresmartsheetdsn.png" /></br></br></p>
+
+<h1 id="advanced-options-menu">Advanced Options Menu</h1>
+
+<aside class="notice">The Advanced Options menu provides controls to include additional row metadata and manage data conversion modes.</aside>
+
+<p>The menu can be accessed either at the time of using the Connector (e.g., from within Tableau):</p>
+
+<p><img src="images/Screenshots/selectadvancedoptions.png" /></br></br></p>
+
+<p>&hellip; or when setting up an ODBC Data Source:</p>
+
+<p><img src="images/Screenshots/odbcdataadminadvancedoptions1.png" /></br></br></p>
+
+<p>Click on the &ldquo;Advanced options&rdquo; link to open the menu:</p>
+
+<p><img src="images/Screenshots/AdvancedOptionsMenu.png" /></br></br></p>
+
+<p>The <strong>Advanced Options</strong> menu has options for including extended metadata (such as Gantt attributes, if present, outline level, and discussions text) as additional columns. It also provides controls for advanced features and logging.</p>
+
+<p><strong>The following options are presented in this menu:</strong></p>
+
+<ul>
+<li>Optional Content - extended metadata as additional columns</li>
+<li>Enabling logging (similar to the option to enable logging in the Start menu)</li>
+<li>Report cache - auto refresh settings</li>
+<li>Data retrieval mode</li>
+<li>SQL table names</li>
+</ul>
+
+<p><strong>Data retrieval mode has 3 options:</strong></p>
+
+<aside class="notice">The &ldquo;Data retrieval mode&rdquo; section only applies to Text/Number columns</aside>
+ 
+
+<ul>
+<li>Always return text - returns all results as text</li>
+<li>Use “majority” rule - returns numeric results only if more than half the column inputs are numeric, discarding all non-numeric input</li>
+<li>Use “entirety” rule - returns numeric results only if 100% of the column inputs are numeric, otherwise returns all results as text</li>
+</ul>
+
+<p><strong>The SQL table names section is available to shorten names. By default the full path is appended to the sheet name. Unchecking this option will cause only the sheet/report name to be returned.</strong></p>
+
+<h1 id="custom-sql-functions-(optional)">Custom SQL Functions (optional)</h1>
+
+<p>In the Advanced Options menu, scroll down to the bottom of the “Optional content” list and you will see an “Enable custom SQL functions” checkbox:</p>
+
+<p><img src="images/Screenshots/customsqlfunctions.png" /></br></br></p>
+
+<p>Checking this option will enable the following SQL functions:</p>
+
+<table><thead>
+<tr>
+<th>Function</th>
+<th>Tableau Example</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>attachments_count() - <em>returns integer</em></td>
+<td>RAWSQL_INT(&lsquo;attachments_count(%1)&rsquo;,[_Rowlocator])</td>
+</tr>
+<tr>
+<td>discussions_count() - <em>returns integer</em></td>
+<td>RAWSQL_INT(&#39;discussions_count(%1)&rsquo;,[_Rowlocator])</td>
+</tr>
+<tr>
+<td>discussions_text() - <em>returns text</em></td>
+<td>RAWSQL_STR(&#39;discussions_text(%1)&rsquo;,[_Rowlocator])</td>
+</tr>
+<tr>
+<td>parent_id() - <em>returns text</em></td>
+<td>RAWSQL_STR(&#39;parent_id(%1)&rsquo;,[_Rowlocator])</td>
+</tr>
+<tr>
+<td>child_ids() - <em>returns text</em> (comma separated values)</td>
+<td>RAWSQL_STR(&#39;child_ids(%1)&rsquo;,[_Rowlocator])</td>
+</tr>
+<tr>
+<td>outline_level() - <em>returns integer</em></td>
+<td>RAWSQL_INT(&#39;outline_levle(%1)&rsquo;,[_Rowlocator])</td>
+</tr>
+<tr>
+<td>sheet_id() - <em>returns text</em></td>
+<td>RAWSQL_STR(&#39;sheet_id(%1)&rsquo;,[_Rowlocator])</td>
+</tr>
+<tr>
+<td>sheet_name() - <em>returns text</em></td>
+<td>RAWSQL_STR(&#39;sheet_name(%1)&rsquo;,[_Rowlocator])</td>
+</tr>
+<tr>
+<td>predecessor_ids() - <em>returns text</em> (comma separated values)</td>
+<td>RAWSQL_STR(&#39;predecessor_ids(%1)&rsquo;,[_Rowlocator])</td>
+</tr>
+<tr>
+<td>predecessor_tasks() - <em>returns text</em></td>
+<td>RAWSQL_STR(&#39;predecessor_tasks(%1)&rsquo;,[_Rowlocator])</td>
+</tr>
+<tr>
+<td>duration_seconds() - <em>returns double</em></td>
+<td>RAWSQL_REAL(&#39;duration_seconds(%1)&rsquo;,[_Rowlocator])</td>
+</tr>
+</tbody></table>
+
+<h1 id="column-type-conversion-logic">Column Type Conversion Logic</h1>
+
+<aside class="notice">Smartsheet allows for any data to be stored in a cell despite the column type.</aside>
+
+<p>The connector uses the following logic to process and convert Smartsheet data:</p>
+
+<ul>
+<li><p><strong>Text/Number</strong>: The Text/Number column defaults to the majority rule. This means that numeric values are returned if more than half of the column inputs are numeric. All other values are discarded. This rule can be changed in the “Advanced Options” section during login.</p></li>
+<li><p><strong>Date, time</strong>, and <strong>datetime</strong>: Date, time, and datetime columns have a storage class of TEXT, which means they are not converted to a date until a query is ran.</p></li>
+<li><p><strong>Picklists</strong>: Picklists probe for types but they use a precise rule (100%). So, one text string in a list of integers would cause the picklist to display text. All of the state picklists resolve to text (5-State Signal, 6-State Hearts, etc..).</p></li>
+<li><p><strong>Checkbox</strong>: Checkbox (or any on/off column) values are stored as a Boolean and uses an integer storage class. Any text data in a checkbox column would be lost. An exception to this rule would be a list to what equates to Boolean data (on/off, true/false, 0/1) i.e. Stars and Flags. These would be stored in a Boolean and the same rules apply.</p></li>
+</ul>
+
+<h1 id="usage"><span class="customTOCSectionHeading">Usage</span></h1>
+
+<aside class="notice">The Usage section provides resources and instructions for connecting some of the most popular pieces of software with Smartsheet.</aside>
+
+<h1 id="tableau-desktop">Tableau Desktop</h1>
+
+<aside class="notice">This walkthrough uses Tableau Desktop version 9, the menus and options for Tableau Desktop version 8 are slightly different.</aside>
+
+<p>Connect to the Smartsheet Data Source by choosing the “To a server” &gt; &ldquo;Other Databases (ODBC)&rdquo; option.  If you do not see the ODBC option listed here, click on the “More Servers…” and choose it from the list from additional options:</p>
+
+<p><img src="images/Screenshots/othersourcesodbc.png" /></br></br></p>
+
+<p>Under &ldquo;Connect Using&rdquo; pick &ldquo;Driver&rdquo;, and then select &ldquo;Smartsheet Live Data Connector&rdquo; from the Driver drop-down menu:</p>
+
+<p><img src="images/Screenshots/selectdsn.png" /></br></br></p>
+
+<p>… and click &ldquo;Connect&rdquo;.</p>
+
+<h2 id="connect-using-email-address-and-password">Connect using Email Address and Password</h2>
+
+<p>Connect to Smartsheet by entering your Smartsheet credentials into the &ldquo;Smartsheet Login&rdquo; dialog box:</p>
+
+<p><img src="images/Screenshots/sslogin.png" /></br></br></p>
+
+<h2 id="connect-using-api-access-token-(for-sso-users)">Connect using API Access Token (for SSO users)</h2>
+
+<aside class="notice">If your Smartsheet account requires single sign-on (e.g., via SAML, Google or MSFT Azure AD) and does not allow logins using email and password, you can use a Smartsheet API Access Token instead.</aside>
+ 
+
+<p>First, you need to create a token - it&rsquo;s easy with just a couple of clicks.  In Smartsheet, navigate to Account &gt; Personal Settings:</p>
+
+<p><img src="images/Screenshots/ssSettings.png" /></br></br></p>
+
+<p>In Personal Settings, select &ldquo;API Access&rdquo; and click on &ldquo;Generate new access token&rdquo;:</p>
+
+<p><img src="images/Screenshots/generatenewaccesstoken.png" /></br></br></p>
+
+<p>Give the new token an arbitrary, descriptive name and click &ldquo;OK&rdquo;:</p>
+
+<p><img src="images/Screenshots/nameToken.png" /></br></br></p>
+
+<aside class="warning">Make sure you copy the token before you close the window because you won&rsquo;t be able to view the token again (for security reasons).</aside>
+
+<p><img src="images/Screenshots/copyToken.png" /></br></br></p>
+
+<p>Now go back to your &ldquo;Smartsheet Login&rdquo; window and click on the &ldquo;Use API token for SSO login&rdquo; option:</p>
+
+<p><img src="images/Screenshots/useAPIToken.png" /></br></br></p>
+
+<p>… and paste your access token:</p>
+
+<p><img src="images/Screenshots/pasteToken.png" /></br></br></p>
+
+<p>Upon successful login, confirm connection information:</p>
+
+<p><img src="images/Screenshots/confirmConnection.png" /></br></br></p>
+
+<h2 id="creating-workbooks-and-reports">Creating Workbooks and Reports</h2>
+
+<p>Browse or search Sheets.  You can search by Sheet or Report name, or by any portion of their path (name of parent Workspace or Folder).</p>
+
+<aside class="notice">Note: The search feature is <b>case-sensitive</b></aside>
+
+<p><img src="images/Screenshots/searchSheets.png" /></br></br></p>
+
+<p>Then drag and drop each Sheet or Report you need to the upper right pane:</p>
+
+<p><img src="images/Screenshots/dragAndDrop.png" /></br></br></p>
+
+<p>If you are using multiple sheets or reports, and they have columns in common, Tableau will try automatically figure out how to map the selected Sheets and will create a default relationship between them.  You can modify the type of relationship (JOIN) at this time.  Once you are done, click &ldquo;Go to Worksheet&rdquo; at the bottom of the application to proceed to the visualization design step:</p>
+
+<p><img src="images/Screenshots/goToWorksheet.png" /></br></br></p>
+
+<p>The next step is to design and configure your report:</p>
+
+<p><img src="images/Screenshots/design.png" /></br></br></p>
+
+<p>Finally, use Tableau Dashboard to create a compelling visual representation of the data:</p>
+
+<aside class="notice">Note: If you have any questions relating to using Tableau, please contact Tableau directly.</aside>
+
+<p><img src="images/Screenshots/visual.png" /></br></br></p>
+
+<aside class="success">If you need to publish your work to Tableau Server, you can proceed to <a href="#tableau-server">this section</a>.</aside>
+
+<h2 id="re-opening-saved-workbooks">Re-opening Saved Workbooks</h2>
+
+<p>Tableau Desktop does not save login credentials by design (for security reasons), so the next time you launch Tableau Desktop and re-open a previously saved workbook, in Tableau 8, you will see an error message:</p>
+
+<p><img src="images/Screenshots/tableau8Error.png" /></br></br></p>
+
+<p>Click &ldquo;Yes&rdquo; and re-enter your Smartsheet password.  Or, if you are using an <a href="#connect-using-api-access-token-(for-sso-users)">API Access token</a> to connect, paste the token into the password field instead:</p>
+
+<p><img src="images/Screenshots/editConnection.png" /></br></br></p>
+
+<p>In Tableau 9 you will see a different message, re-enter your login credentials then click &ldquo;OK&rdquo;. Or, if you are using an <a href="#connect-using-api-access-token-(for-sso-users)">API Access token</a> to connect, paste the token into the password field instead.</p>
+
+<p><img src="images/Screenshots/reenteruserandpassword.png" /></br></br></p>
+
+<h1 id="tableau-server">Tableau Server</h1>
+
+<aside class="success">This section covers publishing workbooks to a server using Tableau. If you do not need to publish workbooks or do not have a Tableau server, you may skip this section.</aside>
+
+<h2 id="publishing-workbooks-to-tableau-server">Publishing Workbooks to Tableau Server</h2>
+
+<p>A typical Tableau Server workflow starts with <a href="#creating-workbooks-and-reports">creating a workbook / report in Tableau Desktop</a>.  Once you create a workbook in Tableau Desktop, you can publish it to a Tableau Server for others to use.</p>
+
+<p>Open the &ldquo;Server&rdquo; menu option and select &ldquo;Publish Workbook…&rdquo;:</p>
+
+<p><img src="images/Screenshots/publishworkbook.png" /></br></br></p>
+
+<p>If you are not already logged in to your Tableau Server, you will be prompted to do so. </p>
+
+<p>Enter your server:</p>
+
+<aside class="notice">For information on how to access your Tableau Server, please contact your organization&rsquo;s IT / Tableau administrator.</aside>
+
+<p><img src="images/Screenshots/enterServer.png" /></br></br></p>
+
+<p>Then enter your login credentials:</p>
+
+<p><img src="images/Screenshots/serverSignin.png" /></br></br></p>
+
+<p>Once logged in, at the next step you will have an opportunity to name the workbook, specify where to save the new workbook on the server, and manage the permissions and access for the published workbook.  In terms of access to workbook data, you have two options: </p>
+
+<ol>
+<li><p>Have users provide their own credentials (which requires they have a Smartsheet login and have permissions in Smartsheet to access the data you included in your workbook).</p></li>
+<li><p>Access the data you have published without having to provide Smartsheet credentials.</p></li>
+</ol>
+
+<p><strong>The second option is likely to be the most common one</strong>.  Tableau Server makes it possible to store your login credentials with your published workbook.  To choose this option, click the &ldquo;Authentication…&rdquo; button:</p>
+
+<p><img src="images/Screenshots/publishtoserver.png" /></br></br></p>
+
+<p>At the next step, you may have to scroll to the right to see the Authentication options:</p>
+
+<p><img src="images/Screenshots/scrollRight.png" /></br></br></p>
+
+<p>Finally, in the Authentication dropdown, select &ldquo;Embedded password&rdquo;:</p>
+
+<p><img src="images/Screenshots/embeddedPassword.png" /></br></br></p>
+
+<p>To save and finish, click &ldquo;OK&rdquo;.</p>
+
+<h1 id="tibco-spotfire">Tibco Spotfire</h1>
+
+<aside class="notice">Spotfire installation instructions can be found <a href="http://spotfire.tibco.com/learn/spotfire-desktop-quickstart#installing-spotfire-desktop">here</a>. Additional resources for using Spotfire can be found <a href="http://spotfire.tibco.com/learn/spotfire-desktop-quickstart#getting-started-with-spotfire">here</a>.</aside>
+
+<aside class="warning">To use Tibco Spotfire with the Live Data Connector, you must <a href="#configuring-a-smartsheet-dsn-(optional)">configure a Data Source</a> first.</aside>
+
+<p>Launch Spotfire and then click on “Add Data” &gt; “Add Data Connection” &gt; &ldquo;Other&rdquo;:</p>
+
+<p><img src="images/Spotfire/AddData.png" /></br></br></p>
+
+<p>Click on “Add” then select “Database…” at the bottom of the list:</p>
+
+<p><img src="images/Spotfire/addOtherDatabase.png" /></br></br></p>
+
+<p>Choose “Odbc Data Provider” then click “Configure…”:</p>
+
+<p><img src="images/Spotfire/configureOdbc.png" /></br></br></p>
+
+<p>Select the <a href="#configuring-a-smartsheet-dsn-(optional)">DSN you configured earlier</a>. Fill in your Smartsheet credentials to log in.  Or, if you are using an <a href="#connect-using-api-access-token-(for-sso-users)">API Access token</a> to connect, paste the token into the password field instead:</p>
+
+<p><img src="images/Spotfire/logIntoDsn.png" /></br></br></p>
+
+<p>Select a Table and all columns needed, set a Data Source Name, then click “OK”:</p>
+
+<p><img src="images/Spotfire/dataSourceName.png" /></br></br></p>
+
+<p>Select the Data table you just set up and click “OK” to import the data (the Name will be the same as the “Data source name” you entered in the last step):</p>
+
+<p><img src="images/Spotfire/finalizeDataSource.png" /></br></br></p>
+
+<p>Finally, use Spotfire to create a nice visualization of the data:</p>
+
+<aside class="notice">For any questions related to using Spotfire, you can visit their support page <a href="http://spotfire.tibco.com/learn/spotfire-desktop-quickstart#getting-started-with-spotfire">here</a>.</aside>
+
+<p><img src="images/Spotfire/visual.png" /></br></br></p>
+
+<h1 id="qlik-sense">Qlik Sense</h1>
+
+<aside class="notice">Qlik Sense installation instructions can be found <a href="https://community.qlik.com/docs/DOC-7140">here.</a></aside>
+
+<aside class="warning">To use Qlik Sense with the Live Data Connector, you must <a href="#configuring-a-smartsheet-dsn-(optional)">configure a Data Source</a> first.</aside>
+
+<p>Open up Qlik then click on “Create a new app” on the dialog that appears</p>
+
+<p><img src="images/QlikSense/5openqlik.png" /></br></br></p>
+
+<p>Enter a name for your app and click “Create”:</p>
+
+<p><img src="images/QlikSense/6createApp.png" /></br></br></p>
+
+<p>Click on “Open app”:</p>
+
+<p><img src="images/QlikSense/7openApp.png" /></br></br></p>
+
+<p>Click on “Add data”:</p>
+
+<p><img src="images/QlikSense/8addData.png" /></br></br></p>
+
+<p>Then click on &ldquo;Connect my data&rdquo;, then click “ODBC”:</p>
+
+<p><img src="images/QlikSense/9ODBC.png" /></br></br></p>
+
+<p>Create a new connection by selecting the <a href="#configuring-a-smartsheet-dsn-(optional)">DSN you configured earlier</a>.  Fill in your Smartsheet credentials to log in.  Or, if you are using an <a href="#connect-using-api-access-token-(for-sso-users)">API Access token</a> to connect, paste the token into the password field instead:</p>
+
+<p><img src="images/QlikSense/10userLogin.png" /></br></br></p>
+
+<p>Select the data you want, then click “Load and finish”:</p>
+
+<p><img src="images/QlikSense/11addSheetsData.png" /></br></br></p>
+
+<p>After the data is loaded, click on “Close”:</p>
+
+<p><img src="images/QlikSense/12dataSuccessful.png" /></br></br></p>
+
+<p>Then click on the new data sheet you just created:</p>
+
+<p><img src="images/QlikSense/14openSheet.png" /></br></br></p>
+
+<p>Finally, use the data to create your dashboard in Qlik Sense:</p>
+
+<p><img src="images/QlikSense/15visual.png" /></br></br></p>
+
+<h1 id="qlikview">QlikView</h1>
+
+<aside class="warning">To use QlikView with the Live Data Connector, you must <a href="#configuring-a-smartsheet-dsn-(optional)">configure a Data Source</a> first.</aside>
+
+<p>Open up ClickView and click on “File”, then click “New”:</p>
+
+<p><img src="images/QlikView/fileNew.png" /></br></br></p>
+
+<p>After the “Getting Started Wizard:” dialog starts, click the “X” in the upper right-hand corner:</p>
+
+<p><img src="images/QlikView/gettingStartedWizard.png" /></br></br></p>
+
+<p>After the dialog is closed, click on “File” again, then click on “Edit Script…”:</p>
+
+<p><img src="images/QlikView/editScript.png" /></br></br></p>
+
+<p>On the next screen, select “ODBC” in the “Database” dropdown, then click on “Connect…” (you can click on “Select…” as well, they open the same dialog box):</p>
+
+<p><img src="images/QlikView/connectToDatabase.png" /></br></br></p>
+
+<p>On the next dialog, select the Data Source you set up (If it doesn’t show, click the “Show User DSNs” checkbox). Fill in your Smartsheet credentials to log in.  Or, if you are <a href="#connect-using-api-access-token-(for-sso-users)">using an API Access token to connect</a>, paste the token into the password field instead:</p>
+
+<p><img src="images/QlikView/logIntoSsDsn.png" /></br></br></p>
+
+<p>Click on “Select”:</p>
+
+<p><img src="images/QlikView/selectSheet.png" /></br></br></p>
+
+<p>Select the Tables and Columns you would like then click “OK”:</p>
+
+<p><img src="images/QlikView/selectTablesAndColumns.png" /></br></br></p>
+
+<p>After you’re finishing adding tables and your script is ready, click “OK”:</p>
+
+<p><img src="images/QlikView/finishedScript.png" /></br></br></p>
+
+<p>Your data is now loaded, you can begin making graphs and charts:</p>
+
+<p><img src="images/QlikView/createGraphs.png" /></br></br></p>
+
+<p>If you add new data to your script after the initial setup, you’ll need to be sure you reload the script:</p>
+
+<p><img src="images/QlikView/reloadScript.png" /></br></br></p>
+
+<h1 id="excel---data-connection-wizard">Excel - Data Connection Wizard</h1>
+
+<aside class="warning">To use the Data Connection Wizard, you must <a href="#configuring-a-smartsheet-dsn-(optional)">configure a Data Source</a> first.</aside>
+
+<p>Open the Data Connection Wizard by navigating to Data &gt; Get External Data &gt; From Other Sources:</p>
+
+<p><img src="images/ExcelDataConnectionWizard/1.png" /></br></br></p>
+
+<p>Select &ldquo;ODBC DSN&rdquo; and click &ldquo;Next&rdquo;:</p>
+
+<p><img src="images/ExcelDataConnectionWizard/2selectODBC.png" /></br></br></p>
+
+<p>Select the name of the DSN you created earlier, and click &ldquo;Next&rdquo;:</p>
+
+<p><img src="images/ExcelDataConnectionWizard/3selectSSDSN.png" /></br></br></p>
+
+<p>When prompted, fill in your Smartsheet login credentials.  If your Smartsheet account requires a single sign-on and you are unable to use email and password for login, you can use the <a href="#connect-using-api-access-token-(for-sso-users)">Use API Token for SSO login</a> option instead and paste your API token into the password field:</p>
+
+<p><img src="images/ExcelDataConnectionWizard/4ssLogin.png" /></br></br></p>
+
+<p>Once connected to Smartsheet, select your sheet or report and click &ldquo;Finish&rdquo;:</p>
+
+<p><img src="images/ExcelDataConnectionWizard/5selectSheet.png" /></br></br></p>
+
+<p>Finally, specify the destination for the imported data:</p>
+
+<p><img src="images/ExcelDataConnectionWizard/6specifyDestination.png" /></br></br></p>
+
+<h1 id="excel---microsoft-query">Excel - Microsoft Query</h1>
+
+<aside class="warning"><b>IMPORTANT</b>: Make sure that the type of Smartsheet ODBC Driver (32-bit or 64-bit) installed on your computer matches the type of Microsoft Office installed (32-bit or 64-bit). <a href="#download">Click here</a> to download the installer packages.</aside>
+
+<aside class="notice">It is possible to create new data sources right in Microsoft Query.  We recommend, however, that you <a href="#configuring-a-smartsheet-dsn-(optional)">Configure a Data Source</a> prior to using Microsoft Query.</aside>
+
+<p>Once a DSN has been configured, navigate to Microsoft Query by going to Data &gt; From Other Sources &gt; From Microsoft Query:</p>
+
+<p><img src="images/ExcelMSQuery/1selectMSQuery.png" /></br></br></p>
+
+<p>Select the Data Source you created earlier:</p>
+
+<p><img src="images/ExcelMSQuery/2selectDataSource.png" /></br></br></p>
+
+<p>When prompted, fill in your Smartsheet login credentials.  If your Smartsheet account requires a single sign-on and you are unable to use email and password for login, you can use the &ldquo;<a href="#connect-using-api-access-token-(for-sso-users)">Use API Token for SSO login</a>&rdquo; option instead and paste your API token into the password field:</p>
+
+<p><img src="images/ExcelMSQuery/3ssLogin.png" /></br></br></p>
+
+<p>Once connected, select your desired sheets or reports:</p>
+
+<p><img src="images/ExcelMSQuery/4selectSheets.png" /></br></br></p>
+
+<aside class="warning">The next two steps (not pictured here) let you filter and sort your data. <b>It is recommended that you do not use filtering here</b> but instead use Microsoft Excel filtering because Microsoft Query filtering frequently generates invalid SQL code.</aside>
+
+<p>Specify the destination for your data:</p>
+
+<p><img src="images/ExcelMSQuery/5setDestination.png" /></br></br></p>
+
+<p>Select how you want to view the data:</p>
+
+<p><img src="images/ExcelMSQuery/6importData.png" /></br></br></p>
+
+<h1 id="excel---power-query">Excel - Power Query</h1>
+
+<aside class="notice">Power Query does not provide a user-friendly interface to select your sheets and build your query.  So, first you need to use Microsoft Query to build your query.</aside>
+
+<p>Follow the <a href="#excel---microsoft-query">earlier instructions for Microsoft Query</a>, but instead of returning data to Excel, select &ldquo;View data or edit data query in Microsoft Query&rdquo;:</p>
+
+<p><img src="images/ExcelMSQuery/5setDestination.png" /></br></br></p>
+
+<p>Once in query editor, click on &ldquo;SQL&rdquo; and copy the SQL statement in the window that opens:</p>
+
+<p><img src="images/ExcelPowerQuery/1sql.png" /></br></br></p>
+
+<p>Now, launch Power Query from the main Excel menu and select &ldquo;From other sources&rdquo; &gt; &ldquo;From ODBC&rdquo;:</p>
+
+<p><img src="images/ExcelPowerQuery/2powerQuery.png" /></br></br></p>
+
+<p>At the next step, paste the string below into &ldquo;Connection string&rdquo;, and paste the query you copied / saved from an earlier step into &ldquo;SQL Statement&rdquo;:</p>
+
+<p><code class="prettyprint">Driver={Smartsheet Live Data Connector}</code></p>
+
+<p><img src="images/ExcelPowerQuery/3fromODBC.png" /></br></br></p>
+
+<p>Finally, enter your Smartsheet credentials when prompted:</p>
+
+<p><img src="images/ExcelPowerQuery/4ssCredentials.png" /></br></br></p>
+
+<h1 id="faq"><span class="customTOCSectionHeading">FAQ</span></h1>
+
+<p><span class="faq">The following questions are answered in this section:</span></p>
+
+<ul>
+<li><a href="#q1">Why am I seeing this error - &ldquo;Unexpected error&rdquo;, when expanded says that &ldquo;ODBC is not enabled for your account&rdquo;?</a></li>
+<li><a href="#q2">My date columns contain mixed milestone names (text) and dates, but on import into Tableau all text data is lost. How can I see this information?</a></li>
+<li><a href="#q3">Does my Smartsheet data need to be formatted in a certain way to be compatible with Tableau?</a></li>
+<li><a href="#q4">When I use Tableau Desktop, why do I have to re-enter my Smartsheet credentials every time I re-open Tableau?</a></li>
+<li><a href="#q5">Why am I getting an “invalid username or password” error when trying to re-open a previously saved Tableau Desktop workbook?</a></li>
+<li><a href="#q6">What is the max number of tables that the Smartsheet Live Data Connector will support in a join?</a></li>
+<li><a href="#q7">What SQL dialect does the Smartsheet Live Data Connector support?</a></li>
+<li><a href="#q8">Why aren’t the Tableau DATEDIFF and DATEADD functions working correctly?</a></li>
+<li><a href="#q9">Why doesn&rsquo;t Tableau’s Fiscal Calendar Start functionality work correctly?</a></li>
+<li><a href="#q10">I tried publishing a Smartsheet-based Workbook and got a message that the functions TODAY() and NOW() will work differently because the server and Smartsheet are in the different timezones.</a></li>
+<li><a href="#q11">My Smartsheet data does not appear to refresh on Tableau Server.</a></li>
+<li><a href="#q12">I am using Tableau Desktop with a datasource published on my Tableau Server, but getting an error “Unknown data source class &#39;SQLite’”.</a></li>
+<li><a href="#q13">I am seeing “Tableau identified limitations…” warning message.</a></li>
+<li><a href="#q14">How do I get Excel to Auto-Refresh Smartsheet Data?</a></li>
+<li><a href="#q15">I am getting an error message trying to configure or delete a DSN - “The setup routines for the … could not be found. Please reinstall the driver.”</a></br></br></br></br></li>
+</ul>
+
+<p><span class="faq" id="q1">Why am I seeing this error - &ldquo;Unexpected error&rdquo;, when expanded says that &ldquo;ODBC is not enabled for your account&rdquo;?</span></p>
+
+<p><img src="images/FAQ/unexpectedError.png" /></br></br></p>
+
+<p><img src="images/FAQ/unexpectedError2.png" /></br></br></p>
+
+<p>This is because ODBC access has not been enabled for your Smartsheet account.  See the <a href="#support">Support</a> section and contact the team to enable access.</p>
+
+<p><a href="#faq">Back to FAQ</a></br></br></br></br></p>
+
+<p><span class="faq" id="q2">My date columns contain mixed milestone names (text) and dates, but on import into Tableau all text data is lost. How can I see this information?</span></p>
+
+<p>Date and Time columns have a storage class of text in the Live Data Connector. This means that they are plain text strings until imported into Tableau or other ODBC applications. If you wish to see the non-date/time content of these columns, you must modify the Tableau column type prior to import. You can do this by a right clicking on the calendar icon in the Tableau table selection screen and selecting the “String” type. All cell contents will now be displayed as raw, unformatted text.</p>
+
+<p><img src="images/FAQ/lostDataTableau.png" /></br></br></p>
+
+<p><a href="#faq">Back to FAQ</a></br></br></br></br></p>
+
+<p><span class="faq" id="q3">Does my Smartsheet data need to be formatted in a certain way to be compatible with Tableau?</span></p>
+
+<p>Spreadsheet data may require some formatting to work with Tableau.  Tableau has created a guide for Excel users, and much of it apply to Smartsheet as well because of similarities in how data may be structured in Excel and Smartsheet.  See <a href="http://kb.tableau.com/articles/knowledgebase/preparing-excel-files-analysis">Preparing your Excel data for Tableau</a> knowledge base article.</p>
+
+<p><a href="#faq">Back to FAQ</a></br></br></br></br></p>
+
+<p><span class="faq" id="q4">When I use Tableau Desktop, why do I have to re-enter my Smartsheet credentials every time I re-open Tableau?</span></p>
+
+<p>Tableau Desktop does not save user login credentials by design, as a security precaution.  It is a feature of Tableau Desktop, not a feature of the Smartsheet Live Data Connector.  To re-open previously saved Tableau Desktop workbooks, see <a href="#re-opening-saved-workbooks">this section</a>.</p>
+
+<p><a href="#faq">Back to FAQ</a></br></br></br></br></p>
+
+<p><span class="faq" id="q5">Why am I getting an &ldquo;invalid username or password&rdquo; error when trying to re-open a previously saved Tableau Desktop workbook?</span></p>
+
+<p><img src="images/FAQ/invalidUsername.png" /></br></br></p>
+
+<p>Please see <a href="#when-i-use-tableau-desktop,-why-do-i-have-to-re-enter-my-smartsheet-credentials-every-time-i-re-open-tableau?">this FAQ item</a>.</p>
+
+<p><a href="#faq">Back to FAQ</a></br></br></br></br></p>
+
+<p><span class="faq" id="q6">What is the max number of tables that the Smartsheet Live Data Connector will support in a join?</span></p>
+
+<p>The Smartsheet Live Data Connector will support up to 64 tables (sheets) in a single join.</p>
+
+<p><a href="#faq">Back to FAQ</a></br></br></br></br></p>
+
+<p><span class="faq" id="q7">What SQL dialect does the Smartsheet Live Data Connector support?</span></p>
+
+<p>The Smartsheet Live Data Connector uses an implementation of SQLite to locally store and query Smartsheet sheets and reports. As such, the Live Data Connector can interpret native SQL as understood by SQLite. The SQL syntax used by SQLite is well documented on the SQLite website: <a href="https://www.sqlite.org/lang.html">https://www.sqlite.org/lang.html</a>. In addition to the SQLite core functions <a href="https://www.sqlite.org/lang_corefunc.html">https://www.sqlite.org/lang_corefunc.html</a>, the Live Data Connector also supports a variety of functions which expose sheet, column and cell metadata through native SQL. Those functions are described above.</p>
+
+<p><a href="#faq">Back to FAQ</a></br></br></br></br></p>
+
+<p><span class="faq" id="q8">Why aren&rsquo;t the Tableau DATEDIFF and DATEADD functions working correctly?</span></p>
+
+<p>When used with the Smartsheet Live Data Connector, Tableau <code class="prettyprint">DATEDIFF</code> and <code class="prettyprint">DATEADD</code> functions will not work correctly and will return null or another unusable result.  This is a known Tableau issue when used in conjunction with certain types of ODBC drivers.  The workaround is to define alternative date calculation functions in Tableau and use them instead.  Here is how to do this:</p>
+
+<ol>
+<li>Open an existing workbook that&rsquo;s connected to Smartsheet via the Smartsheet Live Data Connector.</li>
+<li>Navigate to the Worksheet view.</li>
+<li>Right-click anywhere in the Data pane and select &ldquo;Create Calculated Field&rdquo;.</li>
+</ol>
+
+<p><img src="images/FAQ/dateDiffdateAdd.png" /></br></br></p>
+
+<ol>
+<li>Provide an arbitrary name for your new field.  In this example we adding 15 days to an already existing date - hence calling it &ldquo;My15DayAdd&rdquo;.<br></li>
+<li>Then in the Functions column select Tableau&rsquo;s <code class="prettyprint">RAWSQL_DATE</code> function.<br></li>
+<li>Finally, In the Formula window type the formula <code class="prettyprint">RAWSQL_DATE(“date(%1, ‘+15 day’)”, [DateField])</code> where <code class="prettyprint">DateField</code> should be replaced by your column name:</li>
+</ol>
+
+<p><img src="images/FAQ/calculatedField.png" /></br></br></p>
+
+<p>You can now use this calculated field anywhere you’d use the <code class="prettyprint">DATEADD</code> calculation. For example, in the screenshot below the original date of September 22, 2010 becomes a <code class="prettyprint">DATEADD</code> date of October 7, 2010 (month wrap) after our calculation is applied:</p>
+
+<p><img src="images/FAQ/calculatedAnywhere.png" /></br></br></p>
+
+<p>If you are interested in the <code class="prettyprint">DATEDIFF</code> calculation, follow the same steps, but this time use a <code class="prettyprint">RAWSQL_INT</code> function as follows: </p>
+
+<p><code class="prettyprint">RAWSQL_INT(&quot;(strftime(&#39;%s&#39;,%2) - strftime(&#39;%s&#39;,%1))/86400&quot;, [StartDateField], [EndDateField])</code> </p>
+
+<p>Replace StartDateField and EndDateField with your actual columns:</p>
+
+<p><img src="images/FAQ/dateDiffCalc.png" /></br></br></p>
+
+<p><a href="#faq">Back to FAQ</a></br></br></br></br></p>
+
+<p><span class="faq" id="q9">Why doesn&rsquo;t Tableau&rsquo;s Fiscal Calendar Start functionality work correctly?</span></p>
+
+<p>Any time I select a different fiscal year start month, it loses the year and quarter data for any month after the start month, through the end of the calendar year.  For example, if I choose August as the start of the fiscal year, the months of August through December show Null values for year and quarter.  January through July, however, show up correctly.</p>
+
+<p>When communicating with the Smartsheet Live Data Connector, Tableau expects (as an example) that if you ask for the 15th month of 2014 that the Connector will return a date of the 3rd month of 2015. The Connector&rsquo;s date function, however, sees the 15th month as a bad value and returns NULL instead.  To work around this limitation, create a calculated field in Tableau:</p>
+
+<ol>
+<li>Right click anywhere in the Data pane and select “Create Calculated Field”</li>
+<li>Let&rsquo;s call it “<em>FY Order Date</em>”</li>
+<li>In the Functions column select <code class="prettyprint">RAWSQL_DATE</code></li>
+<li>Then in the Formula window type <code class="prettyprint">RAWSQL_DATE(&quot;date(%1, &#39;+6 month&#39;), [Order Date])</code>, where “Order Date” should be replaced with the name of the date column you will use from your table.<br></li>
+</ol>
+
+<p>In this example the Fiscal Year starts on July 1st - hence &rsquo;<code class="prettyprint">+6 month</code>&rsquo;.  If your Fiscal Year starts on a different month, you would need to adjust accordingly. For instance, if it starts in March, your calculation should say ‘<code class="prettyprint">+2 month</code>’.</p>
+
+<p>The result should look like this:</p>
+
+<p><img src="images/FAQ/fiscalCalendar.png" /></br></br></p>
+
+<p><a href="#faq">Back to FAQ</a></br></br></br></br></p>
+
+<p><span class="faq" id="q10">I tried publishing a Smartsheet-based Workbook and got a message that the functions TODAY() and NOW() will work differently because the server and Smartsheet are in the different timezones.</span></p>
+
+<p>Tableau appears to be returning incorrect information when executing the NOW() function, and there appear to be a number of <a href="http://community.tableau.com/thread/118197?start=0&amp;tstart=0">online forum posts</a> confirming this.</p>
+
+<p>Luckily, as with <code class="prettyprint">DATEADD</code> and <code class="prettyprint">DATEDIFF</code> we can modify these calculations to return UTC or local time. The <code class="prettyprint">NOW()</code> UTC function is <code class="prettyprint">RAWSQL_DATETIME(&quot;datetime(&#39;now&#39;)&quot;)</code>. And the <code class="prettyprint">NOW()</code> local time function is <code class="prettyprint">RAWSQL_DATETIME(&quot;datetime(&#39;now&#39;, &#39;localtime&#39;)&quot;)</code>.</p>
+
+<p>The way most other Tableau users address this is by picking a common time zone and modifying the calculations to always use that time zone. <strong>Our recommendation is to replace <code class="prettyprint">NOW()</code> with your own function that returns UTC if you need to be consistent across time zones</strong> (all other Smartsheet dates will also get returned in UTC). </p>
+
+<p><a href="#faq">Back to FAQ</a></br></br></br></br></p>
+
+<p><span class="faq" id="q11">My Smartsheet data does not appear to refresh on Tableau Server.</span></p>
+
+<p>There is a known issue with Tableau Server prior to version 8.3.3 where the manual refresh (using F5) does not refresh any data from Smartsheet. The issue has been addressed in Tableau Server 8.3.3.</p>
+
+<p><a href="#faq">Back to FAQ</a></br></br></br></br></p>
+
+<p><span class="faq" id="q12">I am using Tableau Desktop with a datasource published on my Tableau Server, but getting an error &ldquo;Unknown data source class &#39;SQLite&rsquo;&rdquo;.</span></p>
+
+<p>There is a known issue with Tableau and Smartsheet Live Data Connector where Tableau Desktop is not able to use a Smartsheet ODBC-based data source published on a Tableau Server.  We are working with Tableau to develop a resolution.  Here are the steps to reproduce the error:</p>
+
+<ol>
+<li>In Tableau Desktop, connect to a data source using ‘Connect Using Driver’.</li>
+<li>Once in a Workbook, select the Data menu dropdown and then “Publish to Server…”</li>
+<li>Log in to Tableau Server, change the Authentication to Embedded Password and publish data source.</li>
+<li>Close and restart Tableau Desktop.</li>
+<li>At the Connect to data screen, select Tableau Server (1st selection in the “On a server” category).</li>
+<li>Log back into Tableau Server, and you’ll see the data source there.</li>
+<li>Select the data source and you’ll get the following message: &ldquo;Unknown data source class &#39;SQLite&rsquo;&rdquo;</li>
+</ol>
+
+<p><a href="#faq">Back to FAQ</a></br></br></br></br></p>
+
+<p><span class="faq" id="q13">I am seeing &ldquo;Tableau identified limitations…&rdquo; warning message.</span></p>
+
+<p>The Smartsheet Live Data Connector comes with a Tableau configuration file designed to optimize the Tableau integration experience.  The file gets installed into C:\My Documents\My Tableau Repository\Datasources directory and is called &ldquo;smartsheet.tdc&rdquo;.</p>
+
+<p>If for some reason Tableau is not able to find this file, you will see the following warning:</p>
+
+<p><img src="images/FAQ/tableauLimitations.png" /></br> </p>
+
+<p>This may happen for one of two reasons:</p>
+
+<ol>
+<li><p>The Smartsheet Live Data Connector was installed before Tableau was installed, so the .tdc file was never copied to the Tableau directory because it didn&rsquo;t exist at the time.</p></li>
+<li><p>Both 32-bit and 64-bit Connectors were installed and then one of them was uninstalled, removing the .tdc file.</p></li>
+</ol>
+
+<p><strong>In both instances, the solution is to uninstall your Smartsheet Live Data Connector(s) and do a clean install of the Connector</strong>, insuring that the .tdc file is now installed into the Tableau directory.</p>
+
+<p><a href="#faq">Back to FAQ</a></br></br></br></br></p>
+
+<p><span class="faq" id="q14">How do I get Excel to Auto-Refresh Smartsheet Data?</span></p>
+
+<aside class="notice">You can schedule a data refresh on specific intervals in Excel.</aside>
+
+<p>To start, click on the “Data” heading, then click “Refresh All”, followed by “Connection Properties…”:</p>
+
+<p><img src="images/FAQ/excelConnectionProperties.png" /></br></br></p>
+
+<p>After that, a dialog will open with several settings for refreshing. After you’ve finished setting the options to your liking, click “OK”:</p>
+
+<p><img src="images/FAQ/excelAutoRefresh.png" /></br></br></p>
+
+<p><a href="#faq">Back to FAQ</a></br></br></br></br></p>
+
+<p><span class="faq" id="q15">I am getting an error message trying to configure or delete a DSN - &ldquo;The setup routines for the … could not be found.  Please reinstall the driver.&rdquo;</span></p>
+
+<p>If you removed the Live Data Connector from your computer, or have upgraded it from version 1.0.20.3 (or earlier when it used to be called Smartsheet ODBC Driver), but still have Data Source Names (DSNs) set up with the old driver, you will not be able to configure or delete them.</p>
+
+<p>When you attempt to configure or delete a DSN set up for an ODBC driver that has been removed from your computer, you will receive the following error message:</p>
+
+<p><img src="images/FAQ/ODBCerror.png" /></br></br></p>
+
+<p>Please follow the instructions described in <a href="http://superuser.com/questions/713258/how-to-remove-odbc-data-source-if-driver-is-removed">this online post</a> to remove any references to the old driver.</p>
+
+<p>First, click &ldquo;Start&rdquo;, type &ldquo;regedit&rdquo; and launch the Windows registry editor:</p>
+
+<p><img src="images/FAQ/regedit.png" /></br></br></p>
+
+<p>If your DSN is a &ldquo;user&rdquo; DSN (most likely) configured for a 64-bit driver, navigate to <code class="prettyprint">HKEY_LOCAL_MACHINE\SOFTWARE\ODBC\ODBC.INI</code> and delete the data source key under <code class="prettyprint">ODBC.INI</code> and the entry under <code class="prettyprint">ODBC.INI\ODBC Data Sources:</code></p>
+
+<p><img src="images/FAQ/registryeditor.png" /></p>
+
+<p><a href="#faq">Back to FAQ</a></br></br></br></br></p>
+
+		  </div>
+		  <div class="dark-box">
+		  </div>
+		</div>
+    </div>
+	<script type="text/javascript">
+		$('h1').addClass("section-header");
+		$('h2').addClass("section-header");
+		$('h3').addClass("section-header");
+		$('h4').addClass("section-header");
+	</script>
+	<script type="text/javascript">
+			$(document).ready(function(){
+			$('.content').css('margin-bottom', parseInt($(window).height()) - (parseInt($('.content').height()) - parseInt($('.content h2').last().offset().top)));
+			});
+	</script>
+  </body>
 </html>
