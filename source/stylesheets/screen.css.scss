@@ -389,6 +389,18 @@ h1.section-header, h2.section-header, h3.section-header, h4.section-header {
   &>h1, &>h2, &>div {
     clear:both;
   }
+
+  IMG.table {
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+
+  }
+
+  TD.quickstart {
+    text-align: center
+    
+  }
     
   .faq {
     @extend %header-font;
@@ -465,7 +477,10 @@ h1.section-header, h2.section-header, h3.section-header, h4.section-header {
     }
 
     td {
-      padding: 10px;
+      padding-top : 10px;
+      padding-bottom: 10px;
+      padding-right: 20px;
+      padding-left: 20px
     }
 
     tr:last-child {
