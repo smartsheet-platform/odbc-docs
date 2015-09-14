@@ -14,7 +14,7 @@ search: false
 
 # <span class="customTOCSectionHeading">Getting Started</span>
 
-<aside class="notice">Last updated: 08/25/2015</aside>
+<aside class="notice">Last updated: 09/14/2015</aside>
 
 # Overview
 
@@ -497,7 +497,15 @@ If you add new data to your script after the initial setup, you’ll need to be 
 
 <img src="images/QlikView/reloadScript.png" /></br></br>
 
-# Excel - Data Connection Wizard
+# Excel
+
+This section covers the various ways to use the Smartsheet Live Data Connector with Excel. 
+
+<aside class="warning"><b>Note</b>: Excel does not provide a seamless way to save credentials within a workbook and can be unreliable. If you are looking to share workbooks with others, Excel is not recommended.</aside>
+
+<aside class="notice">If you choose to use Excel and need to share your workbooks, it is recommended that you use <a href="#excel---microsoft-query">Microsoft Query</a>. Because of the way data is created and stored, the <a href="#excel---data-connection-wizard">Data Connection Wizard</a> is <b>not</b> supported for saving credentials.</aside>
+
+## Excel - Data Connection Wizard
 
 <aside class="warning">To use the Data Connection Wizard, you must <a href="#configuring-a-smartsheet-dsn-(optional)">configure a Data Source</a> first.</aside>
 
@@ -525,7 +533,7 @@ Finally, specify the destination for the imported data:
 
 <img src="images/ExcelDataConnectionWizard/6specifyDestination.png" /></br></br>
 
-# Excel - Microsoft Query
+## Excel - Microsoft Query
 
 <aside class="warning"><b>IMPORTANT</b>: Make sure that the type of Smartsheet ODBC Driver (32-bit or 64-bit) installed on your computer matches the type of Microsoft Office installed (32-bit or 64-bit). <a href="#download">Click here</a> to download the installer packages.</aside>
 
@@ -557,7 +565,41 @@ Select how you want to view the data:
 
 <img src="images/ExcelMSQuery/6importData.png" /></br></br>
 
-# Excel - Power Query
+### Saving Credentials
+
+To save credentials, click on the "DATA" tab, then click on "Connections":
+
+<img src="images/credentials/dataConnections.png"></br></br>
+
+Choose the Connection for your query, then click on "Properties"
+
+<img src="images/credentials/workbookConnections.png"></br></br>
+
+<aside class="notice"><b>Note</b>: In order to save your credentials, you'll need to generate an <a href="http://smartsheet-platform.github.io/api-docs/#generating-access-token">API access token</a>. <b>Using your Smartsheet password is not recommended as it may be visible to others</b>.</aside>
+
+</br>
+
+Click on the "Definition" tab, then check the "Save password" option. 
+
+After you've checked the option to save your password, you'll want to copy the following string to the end of the "Connection String:" (Replacing "API_TOKEN" with the [API access token](http://smartsheet-platform.github.io/api-docs/#generating-access-token) you generated).
+
+`PWD=API_TOKEN`
+
+Finally, click on "OK":
+
+
+<img src="images/credentials/savePassword.png"></br></br>
+
+<aside class="notice">When a workbook is shared with a user for the first time, it may ask them to enter their Smartsheet username & password. <b>You can cancel the login process when the dialog appears, then refresh the connection manually</b>.</aside>
+
+<img src="images/credentials/ssLogin.png"></br></br>
+
+<img src="images/credentials/refreshAll.png"></br></br>
+
+
+
+
+## Excel - Power Query
 
 <aside class="notice">Power Query does not provide a user-friendly interface to select your sheets and build your query.  So, first you need to use Microsoft Query to build your query.</aside>
 
