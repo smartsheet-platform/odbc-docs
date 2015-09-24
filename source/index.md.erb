@@ -14,7 +14,7 @@ search: false
 
 # <span class="customTOCSectionHeading">Getting Started</span>
 
-<aside class="notice">Last updated: 09/23/2015</aside>
+<aside class="notice">Last updated: 09/24/2015</aside>
 
 # Overview
 
@@ -54,9 +54,7 @@ This section provides a fast track to getting you up and running with the Smarts
 		 <li> <a href="#tibco-spotfire">Tibco Spotfire</a> </li>
 		 <li> <a href="#qlik-sense">Qlik Sense</a> </li>
 		 <li> <a href="#qlikview">QlikView</a> </li>
-		 <li> <a href="#excel---data-connection-wizard">Excel - Data Connection Wizard</a> </li> 
-		 <li> <a href="#excel---microsoft-query">Excel - Microsoft Query</a> </li>
-		 <li> <a href="#excel---power-query">Excel - Power Query</a> </li> 
+		 <li> <a href="#excel">Excel</a> </li> 
 		</td>
 	</tr>
 </table>
@@ -67,7 +65,7 @@ This section provides a fast track to getting you up and running with the Smarts
 
 # Requirements
 
-* Smartsheet **Enterprise Plan** and a user license 
+* Smartsheet **Enterprise** Plan and a user license 
 * MSFT Windows 7, 8 or Windows Server 2012
 * Tableau Desktop 8.2/8.3/9.x or Server 8.3.3/9.x
 * QlikView 11.2, Qlik Sense 1.1
@@ -89,11 +87,13 @@ Download the most recent installer:
 
 # <span class="customTOCSectionHeading">Configuration</span>
 
-<aside class="notice">The Smartsheet live Data Connector contains several Advanced Options which provide some additional features.</aside>
+<aside class="notice">This section covers a number of advanced features and additional capabilties included with the Smartsheet Live Data Connector.</aside>
 
 # Windows Proxy Configuration (optional)
 
-Some organizations use a [proxy server](https://en.wikipedia.org/wiki/Proxy_server) to access web content.  If you are using a proxy to access web content, the Smartsheet Live Data Connector will use your proxy server as well. You can check your proxy settings from “Internet Options” in your Control Panels. To do so, select the “Connections” tab, and then click on "LAN settings" at the bottom of the window:
+Some organizations use a [proxy server](https://en.wikipedia.org/wiki/Proxy_server) to access web content.  If you are using a proxy to access web content, the Smartsheet Live Data Connector will use your proxy server as well. You can check your proxy settings from **Internet Options** in your Control Panel. 
+
+To do so, select the **Connections** tab, and then click on **LAN settings** at the bottom of the window:
 
 <aside class="notice">By default the Smartsheet Live Data Connector will use the Windows / Internet Explorer’s proxy settings for the currently logged-in user.</aside>
 
@@ -103,9 +103,9 @@ Some organizations use a [proxy server](https://en.wikipedia.org/wiki/Proxy_serv
 
 <img src="images/proxy/lansettings.png" /></br></br>
 
-The Smartsheet Live Data Connector will use either the automatic configuration script in the “Automatic configuration” group box or the proxy server address in the “Proxy server” group box as valid proxy server configurations. 
+The Smartsheet Live Data Connector will use either the automatic configuration script in the **Automatic configuration** group box or the proxy server address in the **Proxy server** group box as valid proxy server configurations. 
 
-<aside class="warning">Note: The Smartsheet Live Data Connector <b>will not</b> use the DHCP or DNS auto-discovery method due to poor performance in some network configurations (the “Automatically detect settings” checkbox).</aside>
+<aside class="warning">Note: The Smartsheet Live Data Connector <b>will not</b> use the DHCP or DNS auto-discovery method due to poor performance in some network configurations (the <b>Automatically detect settings</b> checkbox).</aside>
 
 If the Smartsheet Live Data Connector is running on a Windows Server where it is not impersonating a logged-in user (for example when it is running under the Tableau Server service) only the system default proxy settings will be used. Ask your Network Administrator for more information on [configuring Windows Server for proxy access](https://technet.microsoft.com/en-us/library/cc731131%28v=ws.10%29.aspx).
 
@@ -115,20 +115,25 @@ If you run into any issues with the Connector, we may ask you to send us your lo
 
 <aside class="notice">Note: because the log files will capture the details of what exactly is getting retrieved from Smartsheet, some potentially confidential data - e.g. sheet names, column names, etc. - may be logged.</aside>
 
-To enable logging, please locate the logging utility by clicking on Start > Programs > Smartsheet Live Data Connector, and click on "Enable Driver Logging":
+To enable logging, please locate the logging utility by navigating to:
+
+1. **Start** > **Programs** > **Smartsheet Live Data Connector**
+2. Click on **Enable Driver Logging**
 
 <img src="images/Screenshots/StartMenu.png" /></br></br>
 
-Check "Enable logging" and click on "Folder" to specify the log destination:
+Check **Enable logging** and click on **Folder** to specify the log destination:
 
 <img src="images/Screenshots/enableLogging.png" /></br></br>
 
-Pick a destination folder and click "OK".  **The easiest approach is to select your Desktop folder so you can easily find the log file later**:
+Pick a destination folder and click **OK**:
+
+<aside class="notice">Note: The easiest approach is to select your Desktop folder so you can easily find the log file later</aside>
 
 
 <img src="images/Screenshots/destinationfolder.png" /></br></br>
 
-Once the destination is selected, click "OK" to finish:
+Once the destination is selected, click **OK** to finish:
 
 <img src="images/Screenshots/destinationselected.png" /></br></br>
 
@@ -138,15 +143,18 @@ Once the destination is selected, click "OK" to finish:
 
 <aside class="notice">Some applications, like Tableau, allow using the Connector directly. Others require to first set up a Data Source in Windows.</aside>
 
-If you need to set up a Data Source, navigate to Start > Programs > Smartsheet Live Data Connector, and run “ODBC Data Source Admin”:
+If you need to set up a Data Source:
+
+1. Navigate to **Start** > **Programs** > **Smartsheet Live Data Connector**
+2. Run **ODBC Data Source Admin**
 
 <img src="images/Screenshots/StartMenu.png" /></br></br>
 
-Click “Add…” to add a data source:
+Click **Add…** to add a data source:
 
 <img src="images/Screenshots/addDSN.png" /></br></br>
 
-Select “Smartsheet Live Data Connector” and click “Finish”:
+Select **Smartsheet Live Data Connector** and click **Finish**:
 
 <img src="images/Screenshots/ssldc.png" /></br></br>
 
@@ -166,7 +174,7 @@ The menu can be accessed either at the time of using the Connector (e.g., from w
 
 <img src="images/Screenshots/odbcdataadminadvancedoptions1.png" /></br></br>
 
-Click on the "Advanced options" link to open the menu:
+Click on the **Advanced options** link to open the menu:
 
 <img src="images/Screenshots/AdvancedOptionsMenu.png" /></br></br>
 
@@ -182,17 +190,17 @@ The **Advanced Options** menu has options for including extended metadata (such 
  
 **Data retrieval mode has 3 options:**
 
-<aside class="notice">The "Data retrieval mode" section only applies to Text/Number columns</aside>
+<aside class="notice">The <b>Data retrieval mode</b> section only applies to Text/Number columns</aside>
  
-* Always return text - returns all results as text
-* Use “majority” rule - returns numeric results only if more than half the column inputs are numeric, discarding all non-numeric input
-* Use “entirety” rule - returns numeric results only if 100% of the column inputs are numeric, otherwise returns all results as text
+* **Always return text** - returns all results as text
+* Use **majority** rule - returns numeric results only if more than half the column inputs are numeric, discarding all non-numeric input
+* Use **entirety** rule - returns numeric results only if 100% of the column inputs are numeric, otherwise returns all results as text
  
 **The SQL table names section is available to shorten names. By default the full path is appended to the sheet name. Unchecking this option will cause only the sheet/report name to be returned.**
 
 # Custom SQL Functions (optional)
 
-In the Advanced Options menu, scroll down to the bottom of the “Optional content” list and you will see an “Enable custom SQL functions” checkbox:
+In the Advanced Options menu, scroll down to the bottom of the **Optional content** list and you will see an **Enable custom SQL functions** checkbox:
 
 <img src="images/Screenshots/customsqlfunctions.png" /></br></br>
 
@@ -219,8 +227,8 @@ duration_seconds() - *returns double* | RAWSQL_REAL('duration_seconds(%1)',[_Row
 
 The connector uses the following logic to process and convert Smartsheet data:
 
-* **Text/Number**: The Text/Number column defaults to the majority rule. This means that numeric values are returned if more than half of the column inputs are numeric. All other values are discarded. This rule can be changed in the “Advanced Options” section during login.
- 
+* **Text/Number**: The Text/Number column defaults to the majority rule. This means that numeric values are returned if more than half of the column inputs are numeric. All other values are discarded. This rule can be changed in the [Advanced Options](#advanced-options-menu) section during login.
+
 * **Date, time**, and **datetime**: Date, time, and datetime columns have a storage class of TEXT, which means they are not converted to a date until a query is ran.
  
 * **Picklists**: Picklists probe for types but they use a precise rule (100%). So, one text string in a list of integers would cause the picklist to display text. All of the state picklists resolve to text (5-State Signal, 6-State Hearts, etc..).
@@ -237,19 +245,19 @@ The connector uses the following logic to process and convert Smartsheet data:
 
 <aside class="notice">This walkthrough uses Tableau Desktop version 9, the menus and options for Tableau Desktop version 8 are slightly different.</aside>
 
-Connect to the Smartsheet Data Source by choosing the “To a server” > "Other Databases (ODBC)" option.  If you do not see the ODBC option listed here, click on the “More Servers…” and choose it from the list from additional options:
+Connect to the Smartsheet Data Source by choosing the **To a server** > **Other Databases (ODBC)** option.  If you do not see the ODBC option listed here, click on the **More Servers…** and choose it from the list from additional options:
 
 <img src="images/Screenshots/othersourcesodbc.png" /></br></br>
 
-Under "Connect Using" pick "Driver", and then select "Smartsheet Live Data Connector" from the Driver drop-down menu:
+Under **Connect Using** pick **Driver**, and then select **Smartsheet Live Data Connector** from the Driver drop-down menu:
 
 <img src="images/Screenshots/selectdsn.png" /></br></br>
 
-… and click "Connect".
+… and click **Connect**.
 
 ## Connect using Email Address and Password
 
-Connect to Smartsheet by entering your Smartsheet credentials into the "Smartsheet Login" dialog box:
+Connect to Smartsheet by entering your Smartsheet credentials into the **Smartsheet Login** dialog box:
 
 <img src="images/Screenshots/sslogin.png" /></br></br>
 
@@ -257,15 +265,17 @@ Connect to Smartsheet by entering your Smartsheet credentials into the "Smartshe
 
 <aside class="notice">If your Smartsheet account requires single sign-on (e.g., via SAML, Google or MSFT Azure AD) and does not allow logins using email and password, you can use a Smartsheet API Access Token instead.</aside>
  
-First, you need to create a token - it's easy with just a couple of clicks.  In Smartsheet, navigate to Account > Personal Settings:
+First, you need to create a token - it's easy with just a couple of clicks.
+
+In Smartsheet, navigate to **Account** > **Personal Settings**:
 
 <img src="images/Screenshots/ssSettings.png" /></br></br>
 
-In Personal Settings, select "API Access" and click on "Generate new access token":
+In Personal Settings, select **API Access** and click on **Generate new access token**:
 
 <img src="images/Screenshots/generatenewaccesstoken.png" /></br></br>
 
-Give the new token an arbitrary, descriptive name and click "OK":
+Give the new token an arbitrary, descriptive name and click **OK**:
 
 <img src="images/Screenshots/nameToken.png" /></br></br>
 
@@ -273,7 +283,7 @@ Give the new token an arbitrary, descriptive name and click "OK":
 
 <img src="images/Screenshots/copyToken.png" /></br></br>
 
-Now go back to your "Smartsheet Login" window and click on the "Use API token for SSO login" option:
+Now go back to your **Smartsheet Login** window and click on the **Use API token for SSO login** option:
 
 <img src="images/Screenshots/useAPIToken.png" /></br></br>
 
@@ -281,7 +291,7 @@ Now go back to your "Smartsheet Login" window and click on the "Use API token fo
 
 <img src="images/Screenshots/pasteToken.png" /></br></br>
 
-Upon successful login, confirm connection information:
+Upon successful login, confirm connection information and click **OK**:
 
 <img src="images/Screenshots/confirmConnection.png" /></br></br>
 
@@ -297,7 +307,9 @@ Then drag and drop each Sheet or Report you need to the upper right pane:
 
 <img src="images/Screenshots/dragAndDrop.png" /></br></br>
 
-If you are using multiple sheets or reports, and they have columns in common, Tableau will try automatically figure out how to map the selected Sheets and will create a default relationship between them.  You can modify the type of relationship (JOIN) at this time.  Once you are done, click "Go to Worksheet" at the bottom of the application to proceed to the visualization design step:
+If you are using multiple sheets or reports, and they have columns in common, Tableau will try automatically figure out how to map the selected Sheets and will create a default relationship between them.  You can modify the type of relationship (JOIN) at this time.
+
+ Once you are done, click **Go to Worksheet** at the bottom of the application to proceed to the visualization design step:
 
 <img src="images/Screenshots/goToWorksheet.png" /></br></br>
 
@@ -319,11 +331,11 @@ Tableau Desktop does not save login credentials by design (for security reasons)
 
 <img src="images/Screenshots/tableau8Error.png" /></br></br>
 
-Click "Yes" and re-enter your Smartsheet password.  Or, if you are using an [API Access token](#connect-using-api-access-token-(for-sso-users)) to connect, paste the token into the password field instead:
+Click **Yes** and re-enter your Smartsheet password.  Or, if you are using an [API Access token](#connect-using-api-access-token-(for-sso-users)) to connect, paste the token into the password field instead:
 
 <img src="images/Screenshots/editConnection.png" /></br></br>
 
-In Tableau 9 you will see a different message, re-enter your login credentials then click "OK". Or, if you are using an [API Access token](#connect-using-api-access-token-(for-sso-users)) to connect, paste the token into the password field instead.
+In Tableau 9 you will see a different message, re-enter your login credentials then click **OK**. Or, if you are using an [API Access token](#connect-using-api-access-token-(for-sso-users)) to connect, paste the token into the password field instead.
 
 <img src="images/Screenshots/reenteruserandpassword.png" /></br></br>
 
@@ -341,7 +353,7 @@ The process for installing the Smartsheet Live Data Connector is the same for bo
 
 A typical Tableau Server workflow starts with [creating a workbook / report in Tableau Desktop](#creating-workbooks-and-reports).  Once you create a workbook in Tableau Desktop, you can publish it to a Tableau Server for others to use.
 
-Open the "Server" menu option and select "Publish Workbook…":
+Open the **Server** menu option and select **Publish Workbook…**:
 
 <img src="images/Screenshots/publishworkbook.png" /></br></br>
 
@@ -363,7 +375,7 @@ Once logged in, at the next step you will have an opportunity to name the workbo
 
 2. Access the data you have published without having to provide Smartsheet credentials.
 
-**The second option is likely to be the most common one**.  Tableau Server makes it possible to store your login credentials with your published workbook.  To choose this option, click the "Authentication…" button:
+**The second option is likely to be the most common one**.  Tableau Server makes it possible to store your login credentials with your published workbook.  To choose this option, click the **Authentication…** button:
 
 <img src="images/Screenshots/publishtoserver.png" /></br></br>
 
@@ -371,27 +383,32 @@ At the next step, you may have to scroll to the right to see the Authentication 
 
 <img src="images/Screenshots/scrollRight.png" /></br></br>
 
-Finally, in the Authentication dropdown, select "Embedded password":
+Finally, in the Authentication dropdown, select **Embedded password**:
 
 <img src="images/Screenshots/embeddedPassword.png" /></br></br>
 
-To save and finish, click "OK".
+To save and finish, click **OK**.
 
 # Tibco Spotfire
 
-<aside class="notice">Spotfire installation instructions can be found <a href="http://spotfire.tibco.com/learn/spotfire-desktop-quickstart#installing-spotfire-desktop">here</a>. Additional resources for using Spotfire can be found <a href="http://spotfire.tibco.com/learn/spotfire-desktop-quickstart#getting-started-with-spotfire">here</a>.</aside>
+
+<aside class="notice">Tibco Spotfire is supported as of version 1.1 of the Live Data Connector, however, the Spotfire Web Player is <b>not</b> supported at this time.</aside>
 
 <aside class="warning">To use Tibco Spotfire with the Live Data Connector, you must <a href="#configuring-a-smartsheet-dsn-(optional)">configure a Data Source</a> first.</aside>
 
-Launch Spotfire and then click on “Add Data” > “Add Data Connection” > "Other":
+*Spotfire installation instructions can be found [here](http://spotfire.tibco.com/learn/spotfire-desktop-quickstart#installing-spotfire-desktop). Additional resources for using Spotfire can be found [here](http://spotfire.tibco.com/learn/spotfire-desktop-quickstart#getting-started-with-spotfire).*
+
+</br>
+
+Launch Spotfire and then navigate to **Add Data** > **Add Data Connection** > **Other**:
 
 <img src="images/Spotfire/AddData.png" /></br></br>
 
-Click on “Add” then select “Database…” at the bottom of the list:
+Click on **Add** then select **Database…** at the bottom of the list:
 
 <img src="images/Spotfire/addOtherDatabase.png" /></br></br>
 
-Choose “Odbc Data Provider” then click “Configure…”:
+Choose **Odbc Data Provider** then click **Configure…**:
 
 <img src="images/Spotfire/configureOdbc.png" /></br></br>
 
@@ -399,11 +416,11 @@ Select the [DSN you configured earlier](#configuring-a-smartsheet-dsn-(optional)
 
 <img src="images/Spotfire/logIntoDsn.png" /></br></br>
 
-Select a Table and all columns needed, set a Data Source Name, then click “OK”:
+Select a Table and all columns needed, set a Data Source Name, then click **OK**:
 
 <img src="images/Spotfire/dataSourceName.png" /></br></br>
 
-Select the Data table you just set up and click “OK” to import the data (the Name will be the same as the “Data source name” you entered in the last step):
+Select the Data table you just set up and click **OK** to import the data (the Name will be the same as the **Data source name** you entered in the last step):
 
 <img src="images/Spotfire/finalizeDataSource.png" /></br></br>
 
@@ -420,23 +437,23 @@ Finally, use Spotfire to create a nice visualization of the data:
 <aside class="notice">Qlik Sense installation instructions can be found <a href="https://community.qlik.com/docs/DOC-7140">here.</a></aside>
 <aside class="warning">To use Qlik Sense with the Live Data Connector, you must <a href="#configuring-a-smartsheet-dsn-(optional)">configure a Data Source</a> first.</aside>
 
-Open up Qlik then click on “Create a new app” on the dialog that appears
+Open up Qlik then click on **Create a new app** on the dialog that appears
 
 <img src="images/QlikSense/5openqlik.png" /></br></br>
 
-Enter a name for your app and click “Create”:
+Enter a name for your app and click **Create**:
 
 <img src="images/QlikSense/6createApp.png" /></br></br>
 
-Click on “Open app”:
+Click on **Open app**:
 
 <img src="images/QlikSense/7openApp.png" /></br></br>
 
-Click on “Add data”:
+Click on **Add data**:
 
 <img src="images/QlikSense/8addData.png" /></br></br>
 
-Then click on "Connect my data", then click “ODBC”:
+Then click on **Connect my data**, then click **ODBC**:
 
 <img src="images/QlikSense/9ODBC.png" /></br></br>
 
@@ -444,11 +461,11 @@ Create a new connection by selecting the [DSN you configured earlier](#configuri
 
 <img src="images/QlikSense/10userLogin.png" /></br></br>
 
-Select the data you want, then click “Load and finish”:
+Select the data you want, then click **Load and finish**:
 
 <img src="images/QlikSense/11addSheetsData.png" /></br></br>
 
-After the data is loaded, click on “Close”:
+After the data is loaded, click on **Close**:
 
 <img src="images/QlikSense/12dataSuccessful.png" /></br></br>
 
@@ -464,35 +481,35 @@ Finally, use the data to create your dashboard in Qlik Sense:
 
 <aside class="warning">To use QlikView with the Live Data Connector, you must <a href="#configuring-a-smartsheet-dsn-(optional)">configure a Data Source</a> first.</aside>
 
-Open up ClickView and click on “File”, then click “New”:
+Open up ClickView and navigate to **File** > **New**:
 
 <img src="images/QlikView/fileNew.png" /></br></br>
 
-After the “Getting Started Wizard:” dialog starts, click the “X” in the upper right-hand corner:
+After the **Getting Started Wizard:** dialog starts, click the **X** in the upper right-hand corner:
 
 <img src="images/QlikView/gettingStartedWizard.png" /></br></br>
 
-After the dialog is closed, click on “File” again, then click on “Edit Script…”:
+After the dialog is closed, click on **File** again, then click on **Edit Script…**:
 
 <img src="images/QlikView/editScript.png" /></br></br>
 
-On the next screen, select “ODBC” in the “Database” dropdown, then click on “Connect…” (you can click on “Select…” as well, they open the same dialog box):
+On the next screen, select **ODBC** in the **Database** dropdown, then click on **Connect…** (you can click on **Select…** as well, they open the same dialog box):
 
 <img src="images/QlikView/connectToDatabase.png" /></br></br>
 
-On the next dialog, select the Data Source you set up (If it doesn’t show, click the “Show User DSNs” checkbox). Fill in your Smartsheet credentials to log in.  Or, if you are [using an API Access token to connect](#connect-using-api-access-token-(for-sso-users)), paste the token into the password field instead:
+On the next dialog, select the Data Source you set up (If it doesn’t show, click the **Show User DSNs** checkbox). Fill in your Smartsheet credentials to log in.  Or, if you are [using an API Access token to connect](#connect-using-api-access-token-(for-sso-users)), paste the token into the password field instead:
 
 <img src="images/QlikView/logIntoSsDsn.png" /></br></br>
 
-Click on “Select”:
+Click on **Select**:
 
 <img src="images/QlikView/selectSheet.png" /></br></br>
 
-Select the Tables and Columns you would like then click “OK”:
+Select the Tables and Columns you would like then click **OK**:
 
 <img src="images/QlikView/selectTablesAndColumns.png" /></br></br>
 
-After you’re finishing adding tables and your script is ready, click “OK”:
+After you’re finishing adding tables and your script is ready, click **OK**:
 
 <img src="images/QlikView/finishedScript.png" /></br></br>
 
@@ -516,15 +533,15 @@ This section covers the various ways to use the Smartsheet Live Data Connector w
 
 <aside class="warning">To use the Data Connection Wizard, you must <a href="#configuring-a-smartsheet-dsn-(optional)">configure a Data Source</a> first.</aside>
 
-Open the Data Connection Wizard by navigating to Data > Get External Data > From Other Sources:
+Open the Data Connection Wizard by navigating to **Data** > **Get External Data** > **From Other Sources**:
 
 <img src="images/ExcelDataConnectionWizard/1.png" /></br></br>
 
-Select "ODBC DSN" and click "Next":
+Select **ODBC DSN** and click **Next**:
 
 <img src="images/ExcelDataConnectionWizard/2selectODBC.png" /></br></br>
 
-Select the name of the DSN you created earlier, and click "Next":
+Select the name of the DSN you created earlier, and click **Next**:
 
 <img src="images/ExcelDataConnectionWizard/3selectSSDSN.png" /></br></br>
 
@@ -532,7 +549,7 @@ When prompted, fill in your Smartsheet login credentials.  If your Smartsheet ac
 
 <img src="images/ExcelDataConnectionWizard/4ssLogin.png" /></br></br>
 
-Once connected to Smartsheet, select your sheet or report and click "Finish":
+Once connected to Smartsheet, select your sheet or report and click **Finish**:
 
 <img src="images/ExcelDataConnectionWizard/5selectSheet.png" /></br></br>
 
@@ -546,15 +563,15 @@ Finally, specify the destination for the imported data:
 
 <aside class="notice">It is possible to create new data sources right in Microsoft Query.  We recommend, however, that you <a href="#configuring-a-smartsheet-dsn-(optional)">Configure a Data Source</a> prior to using Microsoft Query.</aside>
 
-Once a DSN has been configured, navigate to Microsoft Query by going to Data > From Other Sources > From Microsoft Query:
+Once a DSN has been configured, navigate to Microsoft Query by navigating to **Data** > **From Other Sources** > **From Microsoft Query**:
 
 <img src="images/ExcelMSQuery/1selectMSQuery.png" /></br></br>
 
-Select the Data Source you created earlier:
+Select the Data Source you created earlier, then click **OK**:
 
 <img src="images/ExcelMSQuery/2selectDataSource.png" /></br></br>
 
-When prompted, fill in your Smartsheet login credentials.  If your Smartsheet account requires a single sign-on and you are unable to use email and password for login, you can use the "<%= apiaccesstoken %>" option instead and paste your API token into the password field:
+When prompted, fill in your Smartsheet login credentials.  If your Smartsheet account requires a single sign-on and you are unable to use email and password for login, you can use the <%= apiaccesstoken %> option instead and paste your API token into the password field:
 
 <img src="images/ExcelMSQuery/3ssLogin.png" /></br></br>
 
@@ -576,11 +593,11 @@ Select how you want to view the data:
 
 <aside class="warning"><b>Note</b>: This method is provided as a potential solution for saving credentials in an Excel workbook. While we have provided this method, <b>saving credentials and sharing workbooks is not recommended or supported by Smartsheet</b>.</aside>
 
-To save credentials, click on the "DATA" tab, then click on "Connections":
+To save credentials, click on the **DATA** tab, then click on **Connections**:
 
 <img src="images/credentials/dataConnections.png"></br></br>
 
-Choose the Connection for your query, then click on "Properties"
+Choose the Connection for your query, then click on **Properties**:
 
 <img src="images/credentials/workbookConnections.png"></br></br>
 
@@ -588,13 +605,13 @@ Choose the Connection for your query, then click on "Properties"
 
 </br>
 
-Click on the "Definition" tab, then check the "Save password" option. 
+Click on the **Definition** tab, then check the **Save password** option. 
 
-After you've checked the option to save your password, you'll want to copy the following string to the end of the "Connection String:" (Replacing "API_TOKEN" with the [API access token](http://smartsheet-platform.github.io/api-docs/#generating-access-token) you generated).
+After you've checked the option to save your password, you'll want to copy the following string to the end of the **Connection String**: (Replacing `API_TOKEN` with the [API access token](http://smartsheet-platform.github.io/api-docs/#generating-access-token) you generated).
 
 `PWD=API_TOKEN`
 
-Finally, click on "OK":
+Finally, click on **OK**:
 
 
 <img src="images/credentials/savePassword.png"></br></br>
@@ -612,19 +629,19 @@ Finally, click on "OK":
 
 <aside class="notice">Power Query does not provide a user-friendly interface to select your sheets and build your query.  So, first you need to use Microsoft Query to build your query.</aside>
 
-Follow the [earlier instructions for Microsoft Query](#excel---microsoft-query), but instead of returning data to Excel, select "View data or edit data query in Microsoft Query":
+Follow the [earlier instructions for Microsoft Query](#excel---microsoft-query), but instead of returning data to Excel, select **View data or edit data query in Microsoft Query**:
 
 <img src="images/ExcelMSQuery/5setDestination.png" /></br></br>
 
-Once in query editor, click on "SQL" and copy the SQL statement in the window that opens:
+Once in query editor, click on **SQL** and copy the SQL statement in the window that opens:
 
 <img src="images/ExcelPowerQuery/1sql.png" /></br></br>
 
-Now, launch Power Query from the main Excel menu and select "From other sources" > "From ODBC":
+Now, launch Power Query from the main Excel menu and select **From other sources** > **From ODBC**:
 
 <img src="images/ExcelPowerQuery/2powerQuery.png" /></br></br>
 
-At the next step, paste the string below into "Connection string", and paste the query you copied / saved from an earlier step into "SQL Statement":
+At the next step, paste the string below into **Connection string**, and paste the query you copied / saved from an earlier step into **SQL Statement**:
 
 `Driver={Smartsheet Live Data Connector}`
 
