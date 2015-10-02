@@ -14,7 +14,7 @@ search: false
 
 # <span class="customTOCSectionHeading">Getting Started</span>
 
-<aside class="notice">Last updated: 09/24/2015</aside>
+<aside class="notice">Last updated: 10/02/2015</aside>
 
 # Overview
 
@@ -345,9 +345,9 @@ In Tableau 9 you will see a different message, re-enter your login credentials t
 
 ## Installation
 
-The process for installing the Smartsheet Live Data Connector is the same for both server and desktop. You can follow the steps in our [Quick Start](#quick-start) section for information on downloading and installing. 
+The process for installing the Smartsheet Live Data Connector is the same for both server and desktop. You can visit the [Download](#download) section to find the latest installer packages.
 
-<aside class="notice">Note: If you have multiple server nodes, the Smartsheet Live Data Connector will need to be installed on each one. We also recommend installing both the 32 and 64 bit versions as they do not conflict with one another.</aside>
+<aside class="notice"><b>Note</b>: If you have multiple server nodes, the Smartsheet Live Data Connector will need to be installed on each one. We also recommend installing both the 32 and 64 bit versions as they do not conflict with one another.</aside>
 
 ## Publishing Workbooks to Tableau Server
 
@@ -517,7 +517,10 @@ Your data is now loaded, you can begin making graphs and charts:
 
 <img src="images/QlikView/createGraphs.png" /></br></br>
 
-If you add new data to your script after the initial setup, you’ll need to be sure you reload the script:
+If you add new data to your script after the initial setup, you’ll need to be sure you reload the script. 
+
+Click on **File** > **Reload**:
+
 
 <img src="images/QlikView/reloadScript.png" /></br></br>
 
@@ -579,7 +582,7 @@ Once connected, select your desired sheets or reports:
 
 <img src="images/ExcelMSQuery/4selectSheets.png" /></br></br>
 
-<aside class="warning">The next two steps (not pictured here) let you filter and sort your data. <b>It is recommended that you do not use filtering here</b> but instead use Microsoft Excel filtering because Microsoft Query filtering frequently generates invalid SQL code.</aside>
+<aside class="warning">The next two steps (not pictured here) let you filter and sort your data. <b>It is recommended that you do not use filtering here</b> but instead use Microsoft Excel filtering. Microsoft Query filtering frequently generates invalid SQL code.</aside>
 
 Specify the destination for your data:
 
@@ -591,7 +594,7 @@ Select how you want to view the data:
 
 ### Saving Credentials
 
-<aside class="warning"><b>Note</b>: This method is provided as a potential solution for saving credentials in an Excel workbook. While we have provided this method, <b>saving credentials and sharing workbooks is not recommended or supported by Smartsheet</b>.</aside>
+<aside class="warning"><b>Note</b>: This method is provided as a potential solution for saving credentials in an Excel workbook. While we have provided this method, <b>saving credentials and sharing workbooks in Excel is not recommended or supported by Smartsheet</b>.</aside>
 
 To save credentials, click on the **DATA** tab, then click on **Connections**:
 
@@ -607,7 +610,7 @@ Choose the Connection for your query, then click on **Properties**:
 
 Click on the **Definition** tab, then check the **Save password** option. 
 
-After you've checked the option to save your password, you'll want to copy the following string to the end of the **Connection String**: (Replacing `API_TOKEN` with the [API access token](http://smartsheet-platform.github.io/api-docs/#generating-access-token) you generated).
+After you've checked the option to save your password, you'll want to copy the following string to the end of the **Connection String** (Replacing `API_TOKEN` with the [API access token](http://smartsheet-platform.github.io/api-docs/#generating-access-token) you generated): 
 
 `PWD=API_TOKEN`
 
@@ -685,7 +688,7 @@ This is because ODBC access has not been enabled for your Smartsheet account.  S
 
 <span class="faq" id="q2">My date columns contain mixed milestone names (text) and dates, but on import into Tableau all text data is lost. How can I see this information?</span>
 
-Date and Time columns have a storage class of text in the Live Data Connector. This means that they are plain text strings until imported into Tableau or other ODBC applications. If you wish to see the non-date/time content of these columns, you must modify the Tableau column type prior to import. You can do this by a right clicking on the calendar icon in the Tableau table selection screen and selecting the “String” type. All cell contents will now be displayed as raw, unformatted text.
+Date and Time columns have a storage class of text in the Live Data Connector. This means that they are plain text strings until imported into Tableau or other ODBC applications. If you wish to see the non-date/time content of these columns, you must modify the Tableau column type prior to import. You can do this by a right clicking on the calendar icon in the Tableau table selection screen and selecting the **String** type. All cell contents will now be displayed as raw, unformatted text.
 
 <img src="images/FAQ/lostDataTableau.png" /></br></br>
 
@@ -747,7 +750,7 @@ If you are interested in the `DATEDIFF` calculation, follow the same steps, but 
 
 `RAWSQL_INT("(strftime('%s',%2) - strftime('%s',%1))/86400", [StartDateField], [EndDateField])` 
 
-Replace StartDateField and EndDateField with your actual columns:
+Replace `StartDateField` and `EndDateField` with your actual columns:
 
 <img src="images/FAQ/dateDiffCalc.png" /></br></br>
 
@@ -759,10 +762,10 @@ Any time I select a different fiscal year start month, it loses the year and qua
 
 When communicating with the Smartsheet Live Data Connector, Tableau expects (as an example) that if you ask for the 15th month of 2014 that the Connector will return a date of the 3rd month of 2015. The Connector's date function, however, sees the 15th month as a bad value and returns NULL instead.  To work around this limitation, create a calculated field in Tableau:
 
-1. Right click anywhere in the Data pane and select “Create Calculated Field”
-2. Let's call it “*FY Order Date*”
+1. Right click anywhere in the Data pane and select **Create Calculated Field**
+2. Let's call it **FY Order Date**
 3. In the Functions column select `RAWSQL_DATE`
-4. Then in the Formula window type `RAWSQL_DATE("date(%1, '+6 month'), [Order Date])`, where “Order Date” should be replaced with the name of the date column you will use from your table.  
+4. Then in the Formula window type `RAWSQL_DATE("date(%1, '+6 month'), [Order Date])`, where `Order Date` should be replaced with the name of the date column you will use from your table.  
 
 In this example the Fiscal Year starts on July 1st - hence '`+6 month`'.  If your Fiscal Year starts on a different month, you would need to adjust accordingly. For instance, if it starts in March, your calculation should say ‘`+2 month`’.
 
@@ -774,7 +777,7 @@ The result should look like this:
 
 <span class="faq" id="q10">I tried publishing a Smartsheet-based Workbook and got a message that the functions TODAY() and NOW() will work differently because the server and Smartsheet are in the different timezones.</span>
 
-Tableau appears to be returning incorrect information when executing the NOW() function, and there appear to be a number of [online forum posts](http://community.tableau.com/thread/118197?start=0&tstart=0) confirming this.
+Tableau appears to be returning incorrect information when executing the `NOW()` function, and there appear to be a number of [online forum posts](http://community.tableau.com/thread/118197?start=0&tstart=0) confirming this.
 
 Luckily, as with `DATEADD` and `DATEDIFF` we can modify these calculations to return UTC or local time. The `NOW()` UTC function is `RAWSQL_DATETIME("datetime('now')")`. And the `NOW()` local time function is `RAWSQL_DATETIME("datetime('now', 'localtime')")`.
 
@@ -792,13 +795,13 @@ There is a known issue with Tableau Server prior to version 8.3.3 where the manu
 
 There is a known issue with Tableau and Smartsheet Live Data Connector where Tableau Desktop is not able to use a Smartsheet ODBC-based data source published on a Tableau Server.  We are working with Tableau to develop a resolution.  Here are the steps to reproduce the error:
 
-1. In Tableau Desktop, connect to a data source using ‘Connect Using Driver’.
-2. Once in a Workbook, select the Data menu dropdown and then “Publish to Server…”
+1. In Tableau Desktop, connect to a data source using **Connect Using Driver**.
+2. Once in a Workbook, select the Data menu dropdown and then **Publish to Server…**
 3. Log in to Tableau Server, change the Authentication to Embedded Password and publish data source.
 4. Close and restart Tableau Desktop.
-5. At the Connect to data screen, select Tableau Server (1st selection in the “On a server” category).
+5. At the Connect to data screen, select **Tableau Server** (1st selection in the **On a server** category).
 6. Log back into Tableau Server, and you’ll see the data source there.
-7. Select the data source and you’ll get the following message: "Unknown data source class 'SQLite'"
+7. Select the data source and you’ll get the following message: **Unknown data source class 'SQLite'**
 
 [Back to FAQ](#faq)</br></br></br></br>
 
@@ -824,11 +827,11 @@ This may happen for one of two reasons:
 
 <aside class="notice">You can schedule a data refresh on specific intervals in Excel.</aside>
 
-To start, click on the “Data” heading, then click “Refresh All”, followed by “Connection Properties…”:
+To start, navigate to **Data** > **Refresh All** > **Connection Properties…**
 
 <img src="images/FAQ/excelConnectionProperties.png" /></br></br>
 
-After that, a dialog will open with several settings for refreshing. After you’ve finished setting the options to your liking, click “OK”:
+After that, a dialog will open with several settings for refreshing. After you’ve finished setting the options to your liking, click **OK**:
 
 <img src="images/FAQ/excelAutoRefresh.png" /></br></br>
 
@@ -844,11 +847,11 @@ When you attempt to configure or delete a DSN set up for an ODBC driver that has
 
 Please follow the instructions described in [this online post](http://superuser.com/questions/713258/how-to-remove-odbc-data-source-if-driver-is-removed) to remove any references to the old driver.
 
-First, click "Start", type "regedit" and launch the Windows registry editor:
+First, click **Start**, type **regedit** and launch the Windows registry editor:
 
 <img src="images/FAQ/regedit.png" /></br></br>
 
-If your DSN is a "user" DSN (most likely) configured for a 64-bit driver, navigate to `HKEY_LOCAL_MACHINE\SOFTWARE\ODBC\ODBC.INI` and delete the data source key under `ODBC.INI` and the entry under `ODBC.INI\ODBC Data Sources:`
+If your DSN is a **user** DSN (most likely) configured for a 64-bit driver, navigate to `HKEY_LOCAL_MACHINE\SOFTWARE\ODBC\ODBC.INI` and delete the data source key under `ODBC.INI` and the entry under `ODBC.INI\ODBC Data Sources:`
 
 <img src="images/FAQ/registryeditor.png" />
 
