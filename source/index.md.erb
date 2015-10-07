@@ -65,7 +65,7 @@ This section provides a fast track to getting you up and running with the Smarts
 
 # Requirements
 
-* Smartsheet **Enterprise** Plan and a user license 
+* Smartsheet Enterprise Plan and a user license 
 * MSFT Windows 7, 8 or Windows Server 2012
 * Tableau Desktop 8.2/8.3/9.x or Server 8.3.3/9.x
 * QlikView 11.2, Qlik Sense 1.1
@@ -682,7 +682,9 @@ Finally, enter your Smartsheet credentials when prompted:
 
 <img src="images/FAQ/unexpectedError2.png" /></br></br>
 
-This is because ODBC access has not been enabled for your Smartsheet account.  See the [Support](#support) section and contact the team to enable access.
+This is because ODBC access has not been enabled for your Smartsheet account. Please see the [Requirements](#requirements) section to ensure your account is eligible to use the Live Data Connector.
+
+<aside class="notice">If you meet all the requirements and still receive this error please visit the <a href="#support">Support</a> section for information on reaching our support team.</aside>
 
 [Back to FAQ](#faq)</br></br></br></br>
 
@@ -710,7 +712,7 @@ Tableau Desktop does not save user login credentials by design, as a security pr
 
 <img src="images/FAQ/invalidUsername.png" /></br></br>
 
-Please see [this FAQ item](#when-i-use-tableau-desktop,-why-do-i-have-to-re-enter-my-smartsheet-credentials-every-time-i-re-open-tableau?).
+Please see [this FAQ item](#q4).
 
 [Back to FAQ](#faq)</br></br></br></br>
 
@@ -797,7 +799,7 @@ There is a known issue with Tableau and Smartsheet Live Data Connector where Tab
 
 1. In Tableau Desktop, connect to a data source using **Connect Using Driver**.
 2. Once in a Workbook, select the Data menu dropdown and then **Publish to Server…**
-3. Log in to Tableau Server, change the Authentication to Embedded Password and publish data source.
+3. Log in to Tableau Server, change the Authentication to **Embedded Password** and publish data source.
 4. Close and restart Tableau Desktop.
 5. At the Connect to data screen, select **Tableau Server** (1st selection in the **On a server** category).
 6. Log back into Tableau Server, and you’ll see the data source there.
