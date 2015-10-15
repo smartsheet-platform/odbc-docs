@@ -43,7 +43,7 @@
 		  <div class="content">
 			<h1 id="getting-started"><span class="customTOCSectionHeading">Getting Started</span></h1>
 
-<aside class="notice">Last updated: 10/02/2015</aside>
+<aside class="notice">Last updated: 10/15/2015</aside>
 
 <h1 id="overview">Overview</h1>
 
@@ -97,7 +97,7 @@
 <h1 id="requirements">Requirements</h1>
 
 <ul>
-<li>Smartsheet <strong>Enterprise</strong> Plan and a user license </li>
+<li>Smartsheet Enterprise Plan and a user license </li>
 <li>MSFT Windows 7, 8 or Windows Server 2012</li>
 <li>Tableau Desktop 8.2/8.3/9.x or Server 8.3.3/9.x</li>
 <li>QlikView 11.2, Qlik Sense 1.1</li>
@@ -472,7 +472,18 @@
 
 <aside class="notice">Tibco Spotfire is supported as of version 1.1 of the Live Data Connector, however, the Spotfire Web Player is <b>not</b> supported at this time.</aside>
 
-<aside class="warning">To use Tibco Spotfire with the Live Data Connector, you must <a href="#configuring-a-smartsheet-dsn-(optional)">configure a Data Source</a> first.</aside>
+<aside class="warning">
+<b>Note</b>: to use Tibco Spotfire with the Live Data Connector, you must first:
+
+<ol>
+<li>
+Install the same version of the Live Data Connector as the version of Spotfire you are using (i.e. if you are using the 64 bit version of Spotfire, you must install the 64 bit version of the Live Data Connector). You can find download links <a href="#download">here</a>.
+</li>
+<li>
+<a href="#configuring-a-smartsheet-dsn-(optional)">Configure a Data Source</a>.
+</li>
+</ol>
+</aside>
 
 <p><em>Spotfire installation instructions can be found <a href="http://spotfire.tibco.com/learn/spotfire-desktop-quickstart#installing-spotfire-desktop">here</a>. Additional resources for using Spotfire can be found <a href="http://spotfire.tibco.com/learn/spotfire-desktop-quickstart#getting-started-with-spotfire">here</a>.</em></p>
 
@@ -754,7 +765,9 @@
 
 <p><img src="images/FAQ/unexpectedError2.png" /></br></br></p>
 
-<p>This is because ODBC access has not been enabled for your Smartsheet account.  See the <a href="#support">Support</a> section and contact the team to enable access.</p>
+<p>This is because ODBC access has not been enabled for your Smartsheet account. Please see the <a href="#requirements">Requirements</a> section to ensure your account is eligible to use the Live Data Connector.</p>
+
+<aside class="notice">If you meet all the requirements and still receive this error please visit the <a href="#support">Support</a> section for information on reaching our support team.</aside>
 
 <p><a href="#faq">Back to FAQ</a></br></br></br></br></p>
 
@@ -782,7 +795,7 @@
 
 <p><img src="images/FAQ/invalidUsername.png" /></br></br></p>
 
-<p>Please see <a href="#when-i-use-tableau-desktop,-why-do-i-have-to-re-enter-my-smartsheet-credentials-every-time-i-re-open-tableau?">this FAQ item</a>.</p>
+<p>Please see <a href="#q4">this FAQ item</a>.</p>
 
 <p><a href="#faq">Back to FAQ</a></br></br></br></br></p>
 
@@ -876,7 +889,7 @@
 <ol>
 <li>In Tableau Desktop, connect to a data source using <strong>Connect Using Driver</strong>.</li>
 <li>Once in a Workbook, select the Data menu dropdown and then <strong>Publish to Server…</strong></li>
-<li>Log in to Tableau Server, change the Authentication to Embedded Password and publish data source.</li>
+<li>Log in to Tableau Server, change the Authentication to <strong>Embedded Password</strong> and publish data source.</li>
 <li>Close and restart Tableau Desktop.</li>
 <li>At the Connect to data screen, select <strong>Tableau Server</strong> (1st selection in the <strong>On a server</strong> category).</li>
 <li>Log back into Tableau Server, and you’ll see the data source there.</li>
