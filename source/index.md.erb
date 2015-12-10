@@ -24,7 +24,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 # <span class="customTOCSectionHeading">Getting Started</span>
 
-<aside class="notice">Last updated: 12/07/2015</aside>
+<aside class="notice">Last updated: 12/10/2015</aside>
 
 # Overview
 
@@ -714,7 +714,8 @@ Finally, enter your Smartsheet credentials when prompted:
 * <a href="#q12">I am using Tableau Desktop with a datasource published on my Tableau Server, but getting an error “Unknown data source class 'SQLite’”.</a>
 * <a href="#q13">I am seeing “Tableau identified limitations…” warning message.</a>
 * <a href="#q14">How do I get Excel to Auto-Refresh Smartsheet Data?</a>
-* <a href="#q15">I am getting an error message trying to configure or delete a DSN - “The setup routines for the … could not be found. Please reinstall the driver.”</a></br></br></br></br>
+* <a href="#q15">I am getting an error message trying to configure or delete a DSN - “The setup routines for the … could not be found. Please reinstall the driver.”</a>
+* <a href="#q16">I am getting an error message when attempting to open a saved workbook - "Invalid username or password for data source"</a></br></br></br></br>
 
 
 <span class="faq" id="q1">Why am I seeing this error - "Unexpected error", when expanded says that "ODBC is not enabled for your account"?</span>
@@ -899,4 +900,17 @@ If your DSN is a **user** DSN (most likely) configured for a 64-bit driver, navi
 <img src="images/FAQ/registryeditor.png" />
 
 [Back to FAQ](#faq)</br></br></br></br>
+
+<span class="faq" id="q16">I am getting an error message when attempting to open a saved workbook - "Invalid username or password for data source"</span>
+
+This error is likely caused by character limitations in Tableau. Because of the way data is passed in Tableau when a workbook is re-opened, the following characters cannot be used in your password:
+
+`{} ; =`
+
+If you have any of these characters in your password, you will need to change it and remove them.
+
+<img src="images/FAQ/password.png"> </br>
+
+[Back to FAQ](#faq)</br></br></br></br>
+
 
