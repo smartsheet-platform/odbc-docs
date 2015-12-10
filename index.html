@@ -56,7 +56,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <h1 id="getting-started"><span class="customTOCSectionHeading">Getting Started</span></h1>
 
-<aside class="notice">Last updated: 12/07/2015</aside>
+<aside class="notice">Last updated: 12/10/2015</aside>
 
 <h1 id="overview">Overview</h1>
 
@@ -793,7 +793,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li><a href="#q12">I am using Tableau Desktop with a datasource published on my Tableau Server, but getting an error “Unknown data source class &#39;SQLite’”.</a></li>
 <li><a href="#q13">I am seeing “Tableau identified limitations…” warning message.</a></li>
 <li><a href="#q14">How do I get Excel to Auto-Refresh Smartsheet Data?</a></li>
-<li><a href="#q15">I am getting an error message trying to configure or delete a DSN - “The setup routines for the … could not be found. Please reinstall the driver.”</a></br></br></br></br></li>
+<li><a href="#q15">I am getting an error message trying to configure or delete a DSN - “The setup routines for the … could not be found. Please reinstall the driver.”</a></li>
+<li><a href="#q16">I am getting an error message when attempting to open a saved workbook - &ldquo;Invalid username or password for data source&rdquo;</a></br></br></br></br></li>
 </ul>
 
 <p><span class="faq" id="q1">Why am I seeing this error - &ldquo;Unexpected error&rdquo;, when expanded says that &ldquo;ODBC is not enabled for your account&rdquo;?</span></p>
@@ -985,6 +986,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>If your DSN is a <strong>user</strong> DSN (most likely) configured for a 64-bit driver, navigate to <code class="prettyprint">HKEY_LOCAL_MACHINE\SOFTWARE\ODBC\ODBC.INI</code> and delete the data source key under <code class="prettyprint">ODBC.INI</code> and the entry under <code class="prettyprint">ODBC.INI\ODBC Data Sources:</code></p>
 
 <p><img src="images/FAQ/registryeditor.png" /></p>
+
+<p><a href="#faq">Back to FAQ</a></br></br></br></br></p>
+
+<p><span class="faq" id="q16">I am getting an error message when attempting to open a saved workbook - &ldquo;Invalid username or password for data source&rdquo;</span></p>
+
+<p>This error is likely caused by character limitations in Tableau. Because of the way data is passed in Tableau when a workbook is re-opened, the following characters cannot be used in your password:</p>
+
+<p><code class="prettyprint">{} ; =</code></p>
+
+<p>If you have any of these characters in your password, you will need to change it and remove them.</p>
+
+<p><img src="images/FAQ/password.png"> </br></p>
 
 <p><a href="#faq">Back to FAQ</a></br></br></br></br></p>
 
