@@ -56,11 +56,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <h1 id="getting-started"><span class="customTOCSectionHeading">Getting Started</span></h1>
 
-<aside class="notice">Last updated: 12/10/2015</aside>
+<aside class="notice">Last updated: 01/15/2016</aside>
 
 <h1 id="overview">Overview</h1>
 
 <p>The Smartsheet Live Data Connector (also known as the Smartsheet ODBC Driver) provides industry-standard connectivity between Smartsheet and third-party analytics tools.  It enables business users to interact with and visualize data stored in Smartsheet using business analytics and data visualization software such as Tableau, Spotfire, QlikView / Qlik Sense, Excel and others.</p>
+
+<aside class="notice"><b>Note</b>: The Smartsheet Live Data Connector now supports <b>Microsoft Access 2013 and 2016</b> as of version 1.2</aside>
 
 <aside class="warning"><b>Note</b>: The Smartsheet Live Data Connector provides a <b>read-only</b> experience and is not able to write data into Smartsheet.</aside>
  
@@ -119,6 +121,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li>QlikView 11.2, Qlik Sense 1.1</li>
 <li>Tibco Spotfire 6.x</li>
 <li>Excel 2010, 2013 - Data Connection Wizard, MSFT Query, Power Query</li>
+<li>Microsoft Access 2013 and 2016</li>
 </ul>
 
 <h1 id="support">Support</h1>
@@ -140,8 +143,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <aside class="notice">If you are planning to use the Connector with Excel, get the one that matches your version of Microsoft Office (32 bit or 64 bit).</aside>
 
 <ul>
-<li><a href="https://s3-us-west-2.amazonaws.com/smartsheet-platform/smartsheet_ldc_setup_32bit_1.1.26.1_Signed.msi">32 bit, version 1.1.26.1</a></li>
-<li><a href="https://s3-us-west-2.amazonaws.com/smartsheet-platform/smartsheet_ldc_setup_64bit_1.1.26.1_Signed.msi">64 bit, version 1.1.26.1</a></li>
+<li><a href="https://s3-us-west-2.amazonaws.com/smartsheet-platform/smartsheet_ldc_setup_32bit_1.2.28.1_Signed.msi">32 bit, version 1.1.26.1</a></li>
+<li><a href="https://s3-us-west-2.amazonaws.com/smartsheet-platform/smartsheet_ldc_setup_64bit_1.2.28.1_Signed.msi">64 bit, version 1.1.26.1</a></li>
 </ul>
 
 <h1 id="configuration"><span class="customTOCSectionHeading">Configuration</span></h1>
@@ -152,9 +155,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <p>Some organizations use a <a href="https://en.wikipedia.org/wiki/Proxy_server">proxy server</a> to access web content.  If you are using a proxy to access web content, the Smartsheet Live Data Connector will use your proxy server as well. You can check your proxy settings from <strong>Internet Options</strong> in your Control Panel. </p>
 
-<p>To do so, select the <strong>Connections</strong> tab, and then click on <strong>LAN settings</strong> at the bottom of the window:</p>
+<p><strong>By default the Smartsheet Live Data Connector will use the Windows / Internet Explorer’s proxy settings for the currently logged-in user. You can find more information on <b>overriding proxy settings</b> in the <a href="#advanced-options-menu">Advanced Options Menu</a> section.</strong></p>
 
-<aside class="notice">By default the Smartsheet Live Data Connector will use the Windows / Internet Explorer’s proxy settings for the currently logged-in user.</aside>
+<aside class="notice"><b>Note</b>: It is rare to need to manually override proxy settings. In most cases, the correct proxy settings will be determined using IE settings.</aside>
+
+<p>To check your settings, select the <strong>Connections</strong> tab, and then click on <strong>LAN settings</strong> at the bottom of the window:</p>
 
 <p><img src="images/proxy/internetproperties.png" /></br></br></p>
 
@@ -164,7 +169,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <p>The Smartsheet Live Data Connector will use either the automatic configuration script in the <strong>Automatic configuration</strong> group box or the proxy server address in the <strong>Proxy server</strong> group box as valid proxy server configurations. </p>
 
-<aside class="warning">Note: The Smartsheet Live Data Connector <b>will not</b> use the DHCP or DNS auto-discovery method due to poor performance in some network configurations (the <b>Automatically detect settings</b> checkbox).</aside>
+<aside class="warning"><b>Note</b>: The Smartsheet Live Data Connector <b>will not</b> use the DHCP or DNS auto-discovery method due to poor performance in some network configurations (the <b>Automatically detect settings</b> checkbox).</aside>
 
 <p>If the Smartsheet Live Data Connector is running on a Windows Server where it is not impersonating a logged-in user (for example when it is running under the Tableau Server service) only the system default proxy settings will be used. Ask your Network Administrator for more information on <a href="https://technet.microsoft.com/en-us/library/cc731131%28v=ws.10%29.aspx">configuring Windows Server for proxy access</a>.</p>
 
@@ -172,24 +177,28 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <p>If you run into any issues with the Connector, we may ask you to send us your log file to help identify and address the problem.  Enabling logging simply creates a text file on your computer and logs the Connector activity.</p>
 
-<aside class="notice">Note: because the log files will capture the details of what exactly is getting retrieved from Smartsheet, some potentially confidential data - e.g. sheet names, column names, etc. - may be logged.</aside>
+<aside class="notice"><b>Note</b>: because the log files will capture the details of what exactly is getting retrieved from Smartsheet, some potentially confidential data - e.g. sheet names, column names, etc. - may be logged.</aside>
 
 <p>To enable logging, please locate the logging utility by navigating to:</p>
 
 <ol>
 <li><strong>Start</strong> &gt; <strong>Programs</strong> &gt; <strong>Smartsheet Live Data Connector</strong></li>
-<li>Click on <strong>Enable Driver Logging</strong></li>
+<li>Click on <strong>Live Data Connector Settings</strong></li>
 </ol>
 
 <p><img src="images/Screenshots/StartMenu.png" /></br></br></p>
 
-<p>Check <strong>Enable logging</strong> and click on <strong>Folder</strong> to specify the log destination:</p>
+<ol>
+<li>Click on <strong>Driver Properties</strong> </li>
+<li>Check <strong>Enable logging</strong></li>
+<li>Click on <strong>Folder&hellip;</strong> to specify the log destination:</li>
+</ol>
 
 <p><img src="images/Screenshots/enableLogging.png" /></br></br></p>
 
 <p>Pick a destination folder and click <strong>OK</strong>:</p>
 
-<aside class="notice">Note: The easiest approach is to select your Desktop folder so you can easily find the log file later</aside>
+<aside class="notice"><b>Note</b>: The easiest approach is to select your Desktop folder so you can easily find the log file later</aside>
 
 <p><img src="images/Screenshots/destinationfolder.png" /></br></br></p>
 
@@ -210,6 +219,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li>Run <strong>ODBC Data Source Admin</strong></li>
 </ol>
 
+<aside class="warning"><b>Note</b>: For <b>Windows 10</b> users, please see the <a href="#windows-10">next section</a> for instructions on locating the ODBC Data Source Admin menu.</aside>
+
 <p><img src="images/Screenshots/StartMenu.png" /></br></br></p>
 
 <p>Click <strong>Add…</strong> to add a data source:</p>
@@ -224,33 +235,72 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <p><img src="images/Screenshots/configuresmartsheetdsn.png" /></br></br></p>
 
+<h2 id="windows-10">Windows 10</h2>
+
+<aside class="success">This section only applies to <b>Windows 10</b> users. If you are using another version of Windows, you may <a href="#advanced-options-menu">skip this section</a>.</aside>
+
+<p>If you are using <strong>Windows 10</strong>, you may have noticed that the option for the ODBC Data Source Admin in your Start Menu is missing. Please follow the steps below to add the Smartsheet DSN on Windows 10.</p>
+
+<p>On your taskbar, click on the <strong>search</strong> box and type in <strong>Control Panel</strong>:</p>
+
+<p><img src="images/Screenshots/Windows10/1controlPanel.png" /> </br></br></p>
+
+<p>Once the Control Panel opens, click on <strong>System and Security</strong>:</p>
+
+<p><img src="images/Screenshots/Windows10/2systemAndSecurity.png" /> </br></br></p>
+
+<p>Scroll down and click on <strong>Administrative Tools</strong>:</p>
+
+<p><img src="images/Screenshots/Windows10/3administrativeTools.png" /> </br></br></p>
+
+<p>Double click on the <strong>appropriate shortcut that matches the driver version you installed</strong> (32bit or 64bit):</p>
+
+<p><img src="images/Screenshots/Windows10/4odbc.png" /> </br></br></p>
+
+<p>After that, you&rsquo;ll see the <strong>ODBC Data Source Admin</strong> window appear, and you can head back to the <a href="#configuring-a-smartsheet-dsn-(optional)">previous section</a> to create the <strong>Smartsheet DSN</strong>.</p>
+
 <h1 id="advanced-options-menu">Advanced Options Menu</h1>
 
-<aside class="notice">The Advanced Options menu provides controls to include additional row metadata and manage data conversion modes.</aside>
+<p><strong>The Advanced Options menu provides controls to include additional row metadata, manage data conversion modes, enable driver logging, and manually override proxy settings.</strong></p>
 
 <p>The menu can be accessed either at the time of using the Connector (e.g., from within Tableau):</p>
 
 <p><img src="images/Screenshots/selectadvancedoptions.png" /></br></br></p>
 
-<p>&hellip; or when setting up an ODBC Data Source:</p>
+<p>&hellip;when setting up an ODBC Data Source:</p>
 
 <p><img src="images/Screenshots/odbcdataadminadvancedoptions1.png" /></br></br></p>
 
-<p>Click on the <strong>Advanced options</strong> link to open the menu:</p>
+<p>&hellip;or by navigating to <strong>Start</strong> &gt; <strong>Smartsheet Live Data Connector</strong> &gt; <strong>Live Data Connector Settings</strong>:</p>
+
+<p><img src="images/Screenshots/StartMenu.png" /> </br></br></p>
+
+<p>The <strong>Advanced Options</strong> menu (called <strong>Live Data Connector Settings</strong> in the Start Menu) has options for including extended metadata (such as Gantt attributes, outline level, and discussions text) as additional columns. It also provides controls for advanced features and logging.</p>
 
 <p><img src="images/Screenshots/AdvancedOptionsMenu.png" /></br></br></p>
 
-<p>The <strong>Advanced Options</strong> menu has options for including extended metadata (such as Gantt attributes, if present, outline level, and discussions text) as additional columns. It also provides controls for advanced features and logging.</p>
+<p><img src="images/Screenshots/AdvancedOptionsMenu1.png" /></br></br></p>
 
-<p><strong>The following options are presented in this menu:</strong></p>
+<p><strong>The following tabs and options are available in this menu:</strong></p>
 
-<ul>
-<li>Optional Content - extended metadata as additional columns</li>
-<li>Enabling logging (similar to the option to enable logging in the Start menu)</li>
-<li>Report cache - auto refresh settings</li>
-<li>Data retrieval mode</li>
-<li>SQL table names</li>
-</ul>
+<ol>
+<li><b>Connection Properties</b></li>
+    <ul>
+        <li>Optional Content - extended metadata as additional columns</li>
+        <li>Data retrieval mode</li>
+        <li>SQL table names</li>
+    </ul>
+
+<li><b>Driver Properties</b></li>
+    <ul>
+        <li>Enabling logging</li>
+        <li>Report cache - auto refresh settings</li>
+        <li>Manually Override Proxy Settings</li>
+    </ul>
+
+</ol>
+
+<aside class="notice">The <b>Manually Override Proxy Settings</b> option can be used in the event that system or user proxy settings can&rsquo;t be determined.</aside>
 
 <p><strong>Data retrieval mode has 3 options:</strong></p>
 
@@ -316,12 +366,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <td>RAWSQL_STR(&#39;predecessor_ids(%1)&rsquo;,[_Rowlocator])</td>
 </tr>
 <tr>
-<td>predecessor_tasks() - <em>returns text</em></td>
-<td>RAWSQL_STR(&#39;predecessor_tasks(%1)&rsquo;,[_Rowlocator])</td>
+<td>predecessor_labels() - <em>returns text</em></td>
+<td>RAWSQL_STR(&#39;predecessor_labels(%1)&rsquo;,[_Rowlocator])</td>
 </tr>
 <tr>
 <td>duration_seconds() - <em>returns double</em></td>
 <td>RAWSQL_REAL(&#39;duration_seconds(%1)&rsquo;,[_Rowlocator])</td>
+</tr>
+<tr>
+<td>workspace_id() - <em>returns text</em></td>
+<td>RAWSQL_STR(&#39;workspace_id(%1)’,[_Rowlocator])</td>
+</tr>
+<tr>
+<td>workspace_name() - <em>returns text</em></td>
+<td>RAWSQL_STR(&#39;workspace_name(%1)’,[_Rowlocator])</td>
 </tr>
 </tbody></table>
 
@@ -401,7 +459,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <p>Browse or search Sheets.  You can search by Sheet or Report name, or by any portion of their path (name of parent Workspace or Folder).</p>
 
-<aside class="notice">Note: The search feature is <b>case-sensitive</b></aside>
+<aside class="notice"><b>Note</b>: The search feature is <b>case-sensitive</b></aside>
 
 <p><img src="images/Screenshots/searchSheets.png" /></br></br></p>
 
@@ -421,7 +479,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <p>Finally, use Tableau Dashboard to create a compelling visual representation of the data:</p>
 
-<aside class="notice">Note: If you have any questions relating to using Tableau, please contact Tableau directly.</aside>
+<aside class="notice"><b>Note</b>: If you have any questions relating to using Tableau, please contact Tableau directly.</aside>
 
 <p><img src="images/Screenshots/visual.png" /></br></br></p>
 
@@ -786,11 +844,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li><a href="#q5">Why am I getting an “invalid username or password” error when trying to re-open a previously saved Tableau Desktop workbook?</a></li>
 <li><a href="#q6">What is the max number of tables that the Smartsheet Live Data Connector will support in a join?</a></li>
 <li><a href="#q7">What SQL dialect does the Smartsheet Live Data Connector support?</a></li>
-<li><a href="#q8">Why aren’t the Tableau DATEDIFF and DATEADD functions working correctly?</a></li>
 <li><a href="#q9">Why doesn&rsquo;t Tableau’s Fiscal Calendar Start functionality work correctly?</a></li>
 <li><a href="#q10">I tried publishing a Smartsheet-based Workbook and got a message that the functions TODAY() and NOW() will work differently because the server and Smartsheet are in the different timezones.</a></li>
 <li><a href="#q11">My Smartsheet data does not appear to refresh on Tableau Server.</a></li>
-<li><a href="#q12">I am using Tableau Desktop with a datasource published on my Tableau Server, but getting an error “Unknown data source class &#39;SQLite’”.</a></li>
 <li><a href="#q13">I am seeing “Tableau identified limitations…” warning message.</a></li>
 <li><a href="#q14">How do I get Excel to Auto-Refresh Smartsheet Data?</a></li>
 <li><a href="#q15">I am getting an error message trying to configure or delete a DSN - “The setup routines for the … could not be found. Please reinstall the driver.”</a></li>
@@ -849,40 +905,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <p><a href="#faq">Back to FAQ</a></br></br></br></br></p>
 
-<p><span class="faq" id="q8">Why aren&rsquo;t the Tableau DATEDIFF and DATEADD functions working correctly?</span></p>
-
-<p>When used with the Smartsheet Live Data Connector, Tableau <code class="prettyprint">DATEDIFF</code> and <code class="prettyprint">DATEADD</code> functions will not work correctly and will return null or another unusable result.  This is a known Tableau issue when used in conjunction with certain types of ODBC drivers.  The workaround is to define alternative date calculation functions in Tableau and use them instead.  Here is how to do this:</p>
-
-<ol>
-<li>Open an existing workbook that&rsquo;s connected to Smartsheet via the Smartsheet Live Data Connector.</li>
-<li>Navigate to the Worksheet view.</li>
-<li>Right-click anywhere in the Data pane and select &ldquo;Create Calculated Field&rdquo;.</li>
-</ol>
-
-<p><img src="images/FAQ/dateDiffdateAdd.png" /></br></br></p>
-
-<ol>
-<li>Provide an arbitrary name for your new field.  In this example we adding 15 days to an already existing date - hence calling it &ldquo;My15DayAdd&rdquo;.<br></li>
-<li>Then in the Functions column select Tableau&rsquo;s <code class="prettyprint">RAWSQL_DATE</code> function.<br></li>
-<li>Finally, In the Formula window type the formula <code class="prettyprint">RAWSQL_DATE(“date(%1, ‘+15 day’)”, [DateField])</code> where <code class="prettyprint">DateField</code> should be replaced by your column name:</li>
-</ol>
-
-<p><img src="images/FAQ/calculatedField.png" /></br></br></p>
-
-<p>You can now use this calculated field anywhere you’d use the <code class="prettyprint">DATEADD</code> calculation. For example, in the screenshot below the original date of September 22, 2010 becomes a <code class="prettyprint">DATEADD</code> date of October 7, 2010 (month wrap) after our calculation is applied:</p>
-
-<p><img src="images/FAQ/calculatedAnywhere.png" /></br></br></p>
-
-<p>If you are interested in the <code class="prettyprint">DATEDIFF</code> calculation, follow the same steps, but this time use a <code class="prettyprint">RAWSQL_INT</code> function as follows: </p>
-
-<p><code class="prettyprint">RAWSQL_INT(&quot;(strftime(&#39;%s&#39;,%2) - strftime(&#39;%s&#39;,%1))/86400&quot;, [StartDateField], [EndDateField])</code> </p>
-
-<p>Replace <code class="prettyprint">StartDateField</code> and <code class="prettyprint">EndDateField</code> with your actual columns:</p>
-
-<p><img src="images/FAQ/dateDiffCalc.png" /></br></br></p>
-
-<p><a href="#faq">Back to FAQ</a></br></br></br></br></p>
-
 <p><span class="faq" id="q9">Why doesn&rsquo;t Tableau&rsquo;s Fiscal Calendar Start functionality work correctly?</span></p>
 
 <p>Any time I select a different fiscal year start month, it loses the year and quarter data for any month after the start month, through the end of the calendar year.  For example, if I choose August as the start of the fiscal year, the months of August through December show Null values for year and quarter.  January through July, however, show up correctly.</p>
@@ -917,22 +939,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p><span class="faq" id="q11">My Smartsheet data does not appear to refresh on Tableau Server.</span></p>
 
 <p>There is a known issue with Tableau Server prior to version 8.3.3 where the manual refresh (using F5) does not refresh any data from Smartsheet. The issue has been addressed in Tableau Server 8.3.3.</p>
-
-<p><a href="#faq">Back to FAQ</a></br></br></br></br></p>
-
-<p><span class="faq" id="q12">I am using Tableau Desktop with a datasource published on my Tableau Server, but getting an error &ldquo;Unknown data source class &#39;SQLite&rsquo;&rdquo;.</span></p>
-
-<p>There is a known issue with Tableau and Smartsheet Live Data Connector where Tableau Desktop is not able to use a Smartsheet ODBC-based data source published on a Tableau Server.  We are working with Tableau to develop a resolution.  Here are the steps to reproduce the error:</p>
-
-<ol>
-<li>In Tableau Desktop, connect to a data source using <strong>Connect Using Driver</strong>.</li>
-<li>Once in a Workbook, select the Data menu dropdown and then <strong>Publish to Server…</strong></li>
-<li>Log in to Tableau Server, change the Authentication to <strong>Embedded Password</strong> and publish data source.</li>
-<li>Close and restart Tableau Desktop.</li>
-<li>At the Connect to data screen, select <strong>Tableau Server</strong> (1st selection in the <strong>On a server</strong> category).</li>
-<li>Log back into Tableau Server, and you’ll see the data source there.</li>
-<li>Select the data source and you’ll get the following message: <strong>Unknown data source class &#39;SQLite&rsquo;</strong></li>
-</ol>
 
 <p><a href="#faq">Back to FAQ</a></br></br></br></br></p>
 
