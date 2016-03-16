@@ -62,7 +62,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <p>The Smartsheet Live Data Connector (also known as the Smartsheet ODBC Driver) provides industry-standard connectivity between Smartsheet and third-party analytics tools.  It enables business users to interact with and visualize data stored in Smartsheet using business analytics and data visualization software such as Tableau, Spotfire, QlikView / Qlik Sense, Excel and others.</p>
 
-<aside class="notice"><b>Note</b>: The Smartsheet Live Data Connector now supports <b>Microsoft Access 2013 and 2016</b> as of version 1.2</aside>
+<aside class="notice"><b>Note</b>: The Smartsheet Live Data Connector now supports <b>Microsoft Access 2013 and 2016</b>, <b>Spotfire Server 7.0.1, and Spotfire Web Player</b> as of version 1.2</aside>
 
 <aside class="warning"><b>Note</b>: The Smartsheet Live Data Connector provides a <b>read-only</b> experience and is not able to write data into Smartsheet.</aside>
  
@@ -114,19 +114,21 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <h1 id="requirements">Requirements</h1>
 
-<p><strong>In order to install the Live Data Connector you will need:</strong></p>
+<p><strong>In order to use the Live Data Connector you will need:</strong></p>
 
 <ul>
-<li>Smartsheet Enterprise Plan and a user license </li>
+<li>Live Data Connector license (included in some plans - see <a href="https://www.smartsheet.com/pricing-page">pricing</a>)</li>
 <li>Microsoft Windows 7, Windows 8, or Windows Server 2012</li>
 </ul>
+
+<aside class="notice"><b>Note</b>: If you do not have an Enterprise plan and do not wish to upgrade, the Live Data Connector is available to purchase for other account types. Please <a href="https://www.smartsheet.com/contact-us-addon?addon=odbc">contact our sales team</a> for more information.</aside>
 
 <p><strong>Additionally, to use the driver you will need access to at least one of these products:</strong></p>
 
 <ul>
 <li>Tableau Desktop Professional Edition 8.2/8.3/9.x or Tableau Server 8.3.3/9.x</li>
 <li>QlikView 11.2, Qlik Sense 1.1</li>
-<li>Tibco Spotfire 6.x</li>
+<li>Tibco Spotfire Desktop, Server, Web Player 7.0.1+</li>
 <li>Microsoft Excel 2010, 2013 - Data Connection Wizard, MSFT Query, Power Query</li>
 <li>Microsoft Access 2013 and 2016</li>
 </ul>
@@ -557,9 +559,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <p>To save and finish, click <strong>OK</strong>.</p>
 
-<h1 id="tibco-spotfire">Tibco Spotfire</h1>
+<h1 id="tibco-spotfire-desktop">Tibco Spotfire Desktop</h1>
 
-<aside class="notice">Tibco Spotfire is supported as of version 1.1 of the Live Data Connector, however, the Spotfire Web Player is <b>not</b> supported at this time.</aside>
+<aside class="notice">Tibco Spotfire is supported as of version 1.1 of the Live Data Connector.</aside>
 
 <aside class="warning">
 <b>Note</b>: to use Tibco Spotfire with the Live Data Connector, you must first:
@@ -603,7 +605,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <p><img src="images/Spotfire/configureOdbc.png" /></br></br></p>
 
-<p>Select the <a href="#configuring-a-smartsheet-dsn-(optional)">DSN you configured earlier</a>. Fill in your Smartsheet credentials to log in.  Or, if you are using an <a href="#connect-using-api-access-token-(for-sso-users)">API Access token</a> to connect, paste the token into the password field instead:</p>
+<p>Select the <a href="#configuring-a-smartsheet-dsn-(optional)">DSN you configured earlier</a>. Fill in your Smartsheet credentials to log in.  Or, if you are using an <a href="#connect-using-api-access-token-(for-sso-users)">API Access token</a> to connect, leave the email field empty and paste the token into the password field instead:</p>
 
 <p><img src="images/Spotfire/logIntoDsn.png" /></br></br></p>
 
@@ -620,6 +622,92 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <aside class="notice">For any questions related to using Spotfire, you can visit their support page <a href="http://spotfire.tibco.com/learn/spotfire-desktop-quickstart#getting-started-with-spotfire">here</a>.</aside>
 
 <p><img src="images/Spotfire/visual.png" /></br></br></p>
+
+<h1 id="tibco-spotfire-server">Tibco Spotfire Server</h1>
+
+<h2 id="connect-using-email-address-and-password">Connect using Email Address and Password</h2>
+
+<aside class="notice">To interact with Spotfire Server, you must install Tibco Spotfire Analyst on your client. Once installed, you will be able to save to and access data on your Tibco Spotfire Server.</aside>
+
+<aside class="warning">
+<b>Note</b>: to use Tibco Server with the Live Data Connector, you must first:
+
+<ol>
+<li>
+<b>Install the same bit version of the Live Data Connector as the version of Spotfire you are using</b> (i.e. if you are using the 64 bit version of Spotfire, you must install the 64 bit version of the Live Data Connector). You can find download links <a href="#download">here</a>.
+</li></br>
+
+<i>If you have the wrong version of the driver installed, you will need to:</i>
+
+<ul>
+<li>
+<b>Uninstall</b> the current Live Data Connector driver.
+</li>
+<li>
+<b>Reinstall</b> the correct version of the driver.</i>
+</li>
+</ul>
+</br>
+
+<li>
+<a href="#configuring-a-smartsheet-dsn-(optional)">Configure a Data Source</a>.
+</li>
+</ol>
+</aside>
+
+<p>When you open Tibco Spotfire Analyst, you&rsquo;ll be prompted to log in and select a Server. If you haven&rsquo;t configured it already, click on <strong>Manage Servers&hellip;</strong>:</p>
+
+<p><img src="images/spotfireServer/1.png"></br></br></p>
+
+<p>On the Manage Servers window, click on <strong>Add</strong>:</p>
+
+<p><img src="images/spotfireServer/2.png"></br></br></p>
+
+<p>On the next screen, enter the <strong>server address</strong> for your Tibco Spotfire server:</p>
+
+<aside class="notice"><b>Note</b>: If you do not know your Tibco Spotfire server address, please consult with your Spotfire server administrator for assistance.</aside>
+
+<p><img src="images/spotfireServer/3.png"></br></br></p>
+
+<aside class="warning"><b>Note</b>: In order to have server visualizations load seamlessly, it is recommended that you check the option to <b>&ldquo;Allow Saving Credentials&rdquo;</b> when setting up the data source for the first time.</br></br>
+
+<img src="images/spotfireServer/4.png"></br>
+
+</aside>
+
+<h2 id="opening-from-spotfire-library">Opening from Spotfire Library</h2>
+
+<aside class="notice">If you&rsquo;re interested in creating data visualizations from scratch, you can follow the steps outlined in the <a href="#tibco-spotfire">Tibco Spotfire</a> section.</aside>
+
+<p>Click on the <strong>Add Data</strong> tab, then click on <strong>Open from Library</strong>:</p>
+
+<p><img src="images/spotfireServer/5.png"></br></br></p>
+
+<p>Select a file from the list, then click on <strong>Open</strong>:</p>
+
+<p><img src="images/spotfireServer/6.png"></br></br></p>
+
+<h2 id="saving-to-spotfire-library">Saving to Spotfire Library</h2>
+
+<p>You can save any changes back to the Spotfire library by clicking on <strong>File</strong> &gt; <strong>Save As</strong> &gt; <strong>Library Item&hellip;</strong>:</p>
+
+<p><img src="images/spotfireServer/7.png"></br></p>
+
+<h1 id="spotfire-web-player">Spotfire Web Player</h1>
+
+<aside class="notice">In order to access content on Spotfire Web Player you&rsquo;ll need your web player URL. Please reach out to your Spotfire Server administrator if you need help locating the URL.</aside>
+
+<p>To access your content on the Spotfire Web Player, you&rsquo;ll first need to log in:</p>
+
+<p><img src="images/spotfireWebPlayer/1.png"></br></br></p>
+
+<p>After logging in, you can view current files uploaded to your Spotfire server. You can also upload files from your computer by clicking on <strong>Open analysis</strong>:</p>
+
+<p><img src="images/spotfireWebPlayer/2.png"></br></br></p>
+
+<p>Then <strong>browse</strong> for the file on your computer:</p>
+
+<p><img src="images/spotfireWebPlayer/3.png"></br></br></p>
 
 <h1 id="qlik-sense">Qlik Sense</h1>
 
