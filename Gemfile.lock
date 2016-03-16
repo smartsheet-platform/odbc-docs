@@ -29,6 +29,7 @@ GEM
     erubis (2.7.0)
     execjs (2.5.2)
     ffi (1.9.8)
+    ffi (1.9.8-x86-mingw32)
     haml (4.0.6)
       tilt
     hike (1.2.3)
@@ -39,7 +40,7 @@ GEM
     i18n (0.7.0)
     json (1.8.2)
     kramdown (1.7.0)
-    libv8 (3.16.14.7)
+    libv8 (3.16.14.13)
     listen (2.10.0)
       celluloid (~> 0.16.0)
       rb-fsevent (>= 0.9.3)
@@ -135,4 +136,4 @@ DEPENDENCIES
   therubyracer (~> 0.12.1)
 
 BUNDLED WITH
-   1.10.5
+   1.11.2
