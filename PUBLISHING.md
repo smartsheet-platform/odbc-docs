@@ -8,7 +8,8 @@ This document outlines the process for publishing the Smartsheet Live Data Conne
 1. Make sure that the `master` branch has the version of the code you would like to publish. 
 2. Tag the branch with a git tag using the command `git tag <TAG_NAME>`.
 3. Push the tag to git using the command `git push --tags`. 
-4. Run the command `rake publish` to publish the code in the `master` branch to `gh-pages`, which is the branch that Github Pages uses to build the static documentation site. 
+4. Run the command `rake publish` to publish the code in the `master` branch to `gh-pages`, which is the branch that Github Pages uses to build the static documentation site.
+   * You might encounter some deprecated warning messages in the terminal when running `rake publish`, but that is expected and can be ignored.  
 5. In the [Releases](https://github.com/smartsheet-platform/odbc-docs/releases) tab of the repository, draft and publish a new release using the tag you created in step 2. 
 
 ## Contributing
