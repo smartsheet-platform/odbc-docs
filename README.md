@@ -35,6 +35,12 @@ Follow the steps below if you'd like to run the documentation locally on your ma
  
 This documentation is based upon [Slate](https://github.com/tripit/slate/) and uses Slate [markdown syntax](https://github.com/tripit/slate/wiki/Markdown-Syntax).
 
+## Contributing
+If you would like to contribute a change to the documentation files, see [Contributing](CONTRIBUTING.md).
+
+## Publishing
+If you would like to publish changes to the documentation files, see [Publishing](PUBLISHING.md).
+
 ## License
 
 	Copyright 2015 Smartsheet, Inc.
