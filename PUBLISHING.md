@@ -4,11 +4,19 @@
 
 This document outlines the process for publishing the Smartsheet Live Data Connector User Guide onto Github Pages. The actual Smartsheet Live Data Connector documentation can be viewed [here](http://smartsheet-platform.github.io/odbc-docs). 
 
+## Why git version tags?
+Git tags are a nice way to keep track of the versions of the documentation. The version of the documentation should match the version of the Smartsheet Live Data Connector that it supports.
+
+## Understanding the publish command
+The `rake publish` command bundles all of the resources in the `source/` directory to create static assets in a local directory called `bundle/`. These static assesst are then pushed into the `gh-pages` branch. Github pages hosts the contents of the `gh-pages` for public viewing. Only Admins and Owners of the repository have push access into the `gh-pages` repo, so `rake publish` command will fail for anyone else.
+
+`rake publish` script details are located in `Rakefile` and `config.rb`.
+
 ## Publishing Process
 1. Make sure that the `master` branch has the version of the code you would like to publish. 
 2. Tag the branch with a git tag using the command `git tag <TAG_NAME>`.
 3. Push the tag to git using the command `git push --tags`. 
-4. Run the command `rake publish` to publish the code in the `master` branch to `gh-pages`, which is the branch that Github Pages uses to build the static documentation site.
+4. Run the command `rake publish`.
    * You might encounter some deprecated warning messages in the terminal when running `rake publish`, but that is expected and can be ignored.  
 5. In the [Releases](https://github.com/smartsheet-platform/odbc-docs/releases) tab of the repository, draft and publish a new release using the tag you created in step 2. 
 
