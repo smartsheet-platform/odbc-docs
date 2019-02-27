@@ -14,7 +14,7 @@ The `rake publish` command bundles all of the resources in the `source/` directo
 
 ## Publishing Process
 1. Make sure that the `master` branch has the version of the code you would like to publish. 
-2. Tag the branch with a git tag using the command `git tag <TAG_NAME>`.
+2. Tag the branch with a git tag using the command `git tag <TAG_NAME>`.  For example `git tag v1.0.1`.
 3. Push the tag to git using the command `git push --tags`. 
 4. Run the command `rake publish`.
    * You might encounter some deprecated warning messages in the terminal when running `rake publish`, but that is expected and can be ignored.  
